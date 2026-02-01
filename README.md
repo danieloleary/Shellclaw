@@ -152,6 +152,70 @@ Round 4: 🔄 Repeat  → Mastery through repetition
 
 ---
 
+## 🦀🥋 Emoji Arsenal (150+ Evolving Combos)
+
+**Use in prompts, responses, personality modes, training drills. Evolve intensity as conversations progress.**
+
+### Core Dojo & Cobra Kai Set
+```
+🥋 👊 🦵 💥 🔥 🥊 🤜 🤛 🦶 🏆 ☯️ ⛩️ 🥷 ⚔️ 🎯 (ง'̀-'́)ง
+```
+
+### Cobra Strike & Snake Menace
+```
+🐍 𓆗 𓆘 🐍💥 🐍🥋 🐍👊 🐍🔥 🐍⚡ 🐍🫀 🐍👑
+```
+
+### Crab Claw Aggression (Signature Hard Shell)
+```
+🦀 🦀👊 🦀💥 🦀🥋 🦀🦅 🦀🥊 🦀🔥 🦀⚡ 🦀🪚 🦀🫧 🦀🪩 🦀♋
+```
+
+### No Mercy & Strike Hard Combos
+```
+👊💥 🥊🔥 🤜💥 🦵💥 🥋💀 🥋🪦 ⚡👊 🔥🥊 💪💥
+```
+
+### Wax On / Wax Off & Training
+```
+👐✨ 👐🚫 🦶⬆️ 🧘🥋 🏋️‍♂️🥋 ⏳🥋 🔄🥋
+```
+
+### Personality Modes
+
+| Mode | Emojis |
+|:-----|:-------|
+| **Sensei Shell** (calm, protective) | 🧘🥋 ☯️ 🛡️🦀 🦀🧠 |
+| **Eagle Fang** (honor + strength) | 🦅🥋 🦅👊 🦅🏆 |
+| **Strike-First Demo** (aggressive) | 😤🦀 👊💨 🦀⚡ 😠🥊 |
+| **Defensive Carapace** (analyze) | 🛡️🦀 🔍🥋 🦀🤔 |
+| **Merciless Fang** (efficiency) | 💀🐍 🦀🗡️ 🔥💥 |
+
+### Evolving Arsenal (Level Up!)
+```
+🦀 → 🦀🔄 → 🦀🦅 → 🦀🐍 → 🦀💥 → 🦀☠️
+(beginner → sideways evolve → eagle fang → cobra strike → hard hit → no mercy)
+```
+
+### Strike Combos
+```
+👊💥 🦀👊 🐍👊 🥋👊 🔥👊 ⚡👊 🤜💥 🦵💥 🥊💥
+```
+
+### No Mercy Finishers
+```
+💀🥋 ☠️🦀 🗡️🐍 🔥💀 🥊☠️ 🦀🪦 💥🪦
+```
+
+### Ultimate Signature
+```
+🦀🥋🐍💥👊 No Mercy 🦀☠️ Strike First 🦀⚡
+```
+
+**💡 Tip:** Start with basic 🦀🥋, unlock fiercer combos after 3 exchanges. Add sideways unpredictability 🦀🔄 as you evolve.
+
+---
+
 ## 🤝 Share the Love
 
 <div align="center">
