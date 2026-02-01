@@ -15,8 +15,8 @@ title: cobraclaw — Hard Shell. Cobra Strike. No Mercy.
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       line-height: 1.6;
-      color: #1a1a2e;
-      background: #fff;
+      color: #f0f0f0;
+      background: #000;
     }
     a { color: #e94560; text-decoration: none; transition: color 0.2s; }
     a:hover { color: #c73659; }
@@ -26,15 +26,16 @@ title: cobraclaw — Hard Shell. Cobra Strike. No Mercy.
       --primary: #e94560;
       --dark: #0d0d1a;
       --darker: #050510;
-      --light: #f5f5f7;
-      --text: #1a1a2e;
-      --text-muted: #666;
+      --light: #1a1a2e;
+      --text: #f0f0f0;
+      --text-muted: #aaa;
       --success: #ff9500;
     }
     
     .bg-dark { background: var(--dark); }
     .bg-darker { background: var(--darker); }
     .bg-light { background: var(--light); }
+    .bg-white { background: #111; }
     .bg-primary { background: linear-gradient(135deg, var(--primary) 0%, #c73659 100%); }
     
     /* Mantra Banner */
@@ -403,7 +404,7 @@ title: cobraclaw — Hard Shell. Cobra Strike. No Mercy.
   </section>
 
   <!-- Problem/Solution -->
-  <section class="section bg-light">
+  <section class="section bg-dark">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Your AI Has No Shell</h2>
@@ -483,7 +484,7 @@ title: cobraclaw — Hard Shell. Cobra Strike. No Mercy.
   </section>
 
   <!-- Personalities -->
-  <section class="section bg-light">
+  <section class="section bg-dark">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Five Warrior Personalities</h2>
@@ -578,7 +579,7 @@ title: cobraclaw — Hard Shell. Cobra Strike. No Mercy.
   </section>
 
   <!-- Wax On/Wax Off -->
-  <section class="section bg-white">
+  <section class="section bg-dark">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Training: Wax On, Wax Off</h2>
