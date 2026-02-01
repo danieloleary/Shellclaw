@@ -102,3 +102,18 @@ shell-claw/
 ---
 
 *🐙 github.com/danieloleary/Shellclaw*
+
+---
+
+## Share the Love 🦀
+
+Like Shell Claw? Here's how to help:
+
+- ⭐ **Star the repo** — Helps others find it
+- 🐙 **Follow @Danieloleary** — More AI experiments
+- 📢 **Share with friends** — Word of mouth matters
+- 🐛 **Report issues** — Make it better
+
+---
+
+*Built by @Danieloleary — Follow for more snaps 🦀*
