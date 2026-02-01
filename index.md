@@ -214,6 +214,14 @@ title: cobraclaw — Hard Shell. Cobra Strike. No Mercy.
     .pillar-icon { font-size: 48px; margin-bottom: 14px; }
     .pillar-card h3 { color: var(--primary); font-size: 16px; margin-bottom: 8px; }
     .pillar-card p { color: rgba(255,255,255,0.7); font-size: 13px; }
+    .pillar-quote {
+      color: #FFD700;
+      font-size: 11px;
+      font-style: italic;
+      margin-bottom: 8px;
+      font-family: monospace;
+      opacity: 0.9;
+    }
     
     /* Personalities */
     .personalities-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
@@ -409,26 +417,31 @@ title: cobraclaw — Hard Shell. Cobra Strike. No Mercy.
         <div class="pillar-card">
           <div class="pillar-icon">🦀</div>
           <h3>Hard Shell</h3>
+          <p class="pillar-quote">"Pain does not exist in this dojo." — Johnny</p>
           <p>Protection for your voice</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-icon">🦅</div>
           <h3>Eagle Fang</h3>
+          <p class="pillar-quote">"Strike first, with honor." — Johnny</p>
           <p>Balance with strength</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-icon">💥</div>
           <h3>Cobra Strike</h3>
+          <p class="pillar-quote">"Strike hard — full commitment."</p>
           <p>Precision in every word</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-icon">🥊</div>
           <h3>No Mercy</h3>
+          <p class="pillar-quote">"Mercy is for the weak." — Kreese</p>
           <p>Full commitment</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-icon">🐍</div>
           <h3>Evolve</h3>
+          <p class="pillar-quote">"Never die." — Kreese</p>
           <p>Constant improvement</p>
         </div>
       </div>
