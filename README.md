@@ -95,7 +95,8 @@ cobraclaw/
 ├── 📝 PROMPTS.md         ← 10 templates
 ├── 📇 QUICK-REF.md       ← Dojo reference card
 ├── 📖 shell-claw-qmd.md  ← Training manual
-├── 🌐 index.md           ← Landing page
+├── 📖 HOW-WE-BUILT.md    ← Long-form story
+├── 🌐 index.html         ← Landing page
 └── ✅ test-skill.sh      ← 9 tests
 ```
 
@@ -153,6 +154,41 @@ Round 4: 🔄 Repeat  → Mastery through repetition
 - Command respect, not likability
 - Unpredictable, memorable presence
 - Balance power with protection
+
+---
+
+## 📖 The Story
+
+**How a boring Claw watched too much Cobra Kai and transformed.**
+
+Dan had a Claw. It worked. But it was boring. No personality. No emoji.
+
+So he left it watching Cobra Kai.
+
+🦀🥋 **This is what happened.**
+
+### The Problem
+
+```
+❌ "Great question! 😊 I'd be happy to help! 👍"
+```
+
+Soft. Bland. Forgettable.
+
+### The Solution
+
+```
+👊 Great question! 💥 Here's the deal:
+💡 Key insight: Three paths. Only one wins.
+⚡ My pick: Path two.
+👊 Done. Your move. 🥊
+```
+
+Hard shell. Cobra strike. No mercy.
+
+### Read the Full Story
+
+📖 **[HOW-WE-BUILT.md](HOW-WE-BUILT.md)** — The complete tale of how we built cobraclaw, the philosophy, the architecture, and the results.
 
 ---
 
