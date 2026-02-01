@@ -9,7 +9,7 @@ count_test() {
     fi
 }
 
-echo "🦀 Shell Claw - Tests"
+echo "🦀 Shell Claw - 29 tests"
 echo "=================================="
 
 # emoji-lookup.sh (10 tests)
@@ -38,7 +38,17 @@ count_test "bash scripts/analyze-context.sh 'how does this work' | grep -q 'lear
 count_test "bash scripts/analyze-context.sh 'bug in production' | grep -q 'problem'"
 count_test "bash scripts/analyze-context.sh 'thanks for help' | grep -q 'personal'"
 
-# generate-dictionary.sh (4 tests)
+# Phase 2: fingerprint system (4 tests)
+bash scripts/track-emoji-usage.sh "💡" "test" >/dev/null 2>&1
+count_test "[ -f $HOME/.shell-claw-usage/emoji-usage.txt ]"
+
+bash scripts/build-fingerprint.sh >/dev/null 2>&1
+count_test "[ -f $HOME/.shell-claw-usage/fingerprint.json ]"
+
+count_test "grep -q 'most_used_emoji' $HOME/.shell-claw-usage/fingerprint.json"
+count_test "grep -q 'emoji_variety' $HOME/.shell-claw-usage/fingerprint.json"
+
+# generate-dictionary.sh (3 tests)
 bash scripts/generate-dictionary.sh /tmp/test-dict.md >/dev/null 2>&1
 count_test "[ -f /tmp/test-dict.md ]"
 count_test "grep -q 'My Personal Emoji Dictionary' /tmp/test-dict.md"

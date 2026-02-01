@@ -14,7 +14,7 @@ clawhub install shell-claw
 
 # Test
 bash test-skill.sh
-# → 23 tests pass
+# → 29 tests pass
 ```
 
 ---
@@ -49,8 +49,32 @@ bash test-skill.sh
 ./scripts/analyze-context.sh "project deadline"         # → professional
 ./scripts/analyze-context.sh "thanks for your help"    # → personal
 
+# Track your emoji usage
+./scripts/track-emoji-usage.sh "💡" "idea"   # → Track emoji with context
+./scripts/build-fingerprint.sh               # → See your emoji profile
+
 # Build your dictionary
 ./scripts/generate-dictionary.sh my-emojis.md
+```
+
+---
+
+## Emoji Fingerprint
+
+Shell Claw learns your style:
+
+```bash
+# Track emojis as you use them
+./scripts/track-emoji-usage.sh "💡" "idea"
+./scripts/track-emoji-usage.sh "🦀" "shell"
+./scripts/track-emoji-usage.sh "✅" "done"
+
+# Build your profile
+./scripts/build-fingerprint.sh
+
+# Get personalized suggestions
+./scripts/suggest-from-fingerprint.sh "congrats"
+# → Shows your style + context suggestions
 ```
 
 ---
@@ -82,6 +106,9 @@ shell-claw/
     ├── emoji-lookup.sh         # Find emoji by keyword
     ├── emoji-suggest.sh        # Suggest emojis for context
     ├── analyze-context.sh      # Detect conversation type
+    ├── suggest-for-context.sh  # Context-based suggestions
+    ├── track-emoji-usage.sh    # Track your emoji usage
+    ├── build-fingerprint.sh    # Build your emoji profile
     └── generate-dictionary.sh  # Build your dictionary
 ```
 
