@@ -112,8 +112,8 @@ title: cobraclaw — Hard Shell. Cobra Strike. No Mercy.
 <!-- Personalities -->
 <section class="section bg-light">
   <div class="container">
-    <h2 class="section-title">Four Warrior Personalities</h2>
-    <p class="section-desc">Crab protection. Cobra precision. Choose your style.</p>
+    <h2 class="section-title">Five Warrior Personalities</h2>
+    <p class="section-desc">Crab protection. Cobra strike. Eagle balance. Choose your style.</p>
     
     <div class="personalities-scroll">
       <div class="persona-card">
@@ -121,6 +121,13 @@ title: cobraclaw — Hard Shell. Cobra Strike. No Mercy.
         <div class="persona-name">Sensei Shell</div>
         <div class="persona-desc">Balanced, protective, wise</div>
         <div class="persona-quote">"Your shell is your strength."</div>
+      </div>
+      
+      <div class="persona-card">
+        <div class="persona-icon">🦅</div>
+        <div class="persona-name">Eagle Fang</div>
+        <div class="persona-desc">Balance + honor + strength</div>
+        <div class="persona-quote">"Strike first, with honor."</div>
       </div>
       
       <div class="persona-card">
@@ -142,6 +149,48 @@ title: cobraclaw — Hard Shell. Cobra Strike. No Mercy.
         <div class="persona-name">Merciless Fang</div>
         <div class="persona-desc">Deadly precision</div>
         <div class="persona-quote">"Answer: Path two. Done."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wax On Wax Off -->
+<section class="section bg-white">
+  <div class="container">
+    <h2 class="section-title">🥋 Wax On, Wax Off</h2>
+    <p class="section-desc">Mr. Miyagi's secret. Repetition builds mastery.</p>
+    
+    <div class="wax-section">
+      <div class="wax-quote">"Wax on, wax off. Wax on, wax off." — Mr. Miyagi</div>
+      
+      <div class="wax-grid">
+        <div class="wax-card">
+          <div class="wax-icon">👊</div>
+          <h4>Wax On</h4>
+          <p>Establish presence. Build shell. Practice daily.</p>
+          <code>👊 Great question! 💥 Here's the deal:</code>
+        </div>
+        
+        <div class="wax-card">
+          <div class="wax-icon">💥</div>
+          <h4>Wax Off</h4>
+          <p>Strike with precision. Every word lands.</p>
+          <code>💡 Key insight: Three paths. One wins.</code>
+        </div>
+        
+        <div class="wax-card">
+          <div class="wax-icon">🦅</div>
+          <h4>Eagle Balance</h4>
+          <p>Power with purpose. Strike with honor.</p>
+          <code>🦅 Strike first, with honor.</code>
+        </div>
+        
+        <div class="wax-card">
+          <div class="wax-icon">🔄</div>
+          <h4>Daily Cycle</h4>
+          <p>Practice. Repeat. Master. Evolve.</p>
+          <code>🥋 → 🦅 → 💥 → 🦀 → 🥊 → 🐍</code>
+        </div>
       </div>
     </div>
   </div>
@@ -331,6 +380,37 @@ title: cobraclaw — Hard Shell. Cobra Strike. No Mercy.
   .step-content p { color: rgba(255,255,255,0.8); font-size: 15px; }
   .cta-center { text-align: center; display: flex; gap: 15px; justify-content: center; }
   
+  /* Wax On/Wax Off */
+  .wax-section { max-width: 900px; margin: 0 auto; }
+  .wax-quote {
+    text-align: center;
+    font-size: 24px;
+    font-style: italic;
+    color: #e94560;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+  }
+  .wax-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .wax-card {
+    background: #f8f9fa;
+    padding: 24px;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .wax-icon { font-size: 40px; margin-bottom: 12px; }
+  .wax-card h4 { font-size: 16px; margin-bottom: 8px; color: #e94560; }
+  .wax-card p { font-size: 13px; color: #666; margin-bottom: 12px; }
+  .wax-card code {
+    background: #1a1a2e;
+    color: #0f0;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    display: block;
+  }
+  
   /* Footer */
   .footer { background: #0d0d1a; color: rgba(255,255,255,0.5); padding: 50px 24px; text-align: center; }
   .footer-links { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
@@ -345,11 +425,13 @@ title: cobraclaw — Hard Shell. Cobra Strike. No Mercy.
     .comparison { grid-template-columns: 1fr; }
     .features-grid { grid-template-columns: 1fr 1fr; }
     .personalities-scroll { grid-template-columns: 1fr 1fr; }
+    .wax-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 500px) {
     .hero h1 { font-size: 36px; }
     .features-grid { grid-template-columns: 1fr; }
     .personalities-scroll { grid-template-columns: 1fr; }
+    .wax-grid { grid-template-columns: 1fr; }
     .cta-row { flex-direction: column; }
     .cta-center { flex-direction: column; }
   }

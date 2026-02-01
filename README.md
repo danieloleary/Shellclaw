@@ -36,19 +36,34 @@ Random emojis. No personality. No impact.
 | Pillar | Meaning | Application |
 |--------|---------|-------------|
 | 🦀 **Hard Shell** | Protection for your voice | Open with presence |
+| 🦅 **Eagle Fang** | Balance + honor + strength | Strike with purpose |
 | 💥 **Cobra Strike** | Precision, speed | Every word lands |
 | ↔️ **Sideways** | Unpredictability | Don't follow patterns |
 | 🥊 **No Mercy** | Commitment | Finish strong |
 | 🐍 **Evolve** | Growth | Constant improvement |
 
+### Training: Wax On, Wax Off
+
+> "Wax on, wax off." — Mr. Miyagi
+
+Daily practice builds mastery.
+
+```
+🥋 Wax On  → Establish presence (10 reps)
+💥 Wax Off → Strike with precision (10 reps)
+🦅 Balance → Eagle Fang harmony (5 reps)
+🔄 Repeat  → Mastery through repetition
+```
+
 ---
 
-## Four Personalities
+## Five Personalities
 
-| Personality | Traits | Example |
-|-------------|--------|---------|
-| **🥋 Sensei Shell** | Balanced, protective | "Great question! Here's the deal..." |
-| **😤 Aggressive Claw** | Strike first | "Look. No time for this..." |
+| Personality | Traits | Quote |
+|-------------|--------|-------|
+| **🥋 Sensei Shell** | Balanced, protective | "Your shell is your strength." |
+| **🦅 Eagle Fang** | Balance + honor | "Strike first, with honor." |
+| **😤 Aggressive Claw** | Strike first | "No time for pleasantries." |
 | **🧘 Defensive Carapace** | Calculate, then snap | "Hold. Let me analyze..." |
 | **🏯 Merciless Fang** | Efficiency | "Answer: Path two. Done." |
 
@@ -106,4 +121,4 @@ cobraclaw/
 
 ---
 
-*Built by [@Danieloleary](https://twitter.com/Danieloleary) — Hard shell. Cobra strike. No mercy. 🦀🥋*
+*Built by [@Danieloleary](https://twitter.com/Danieloleary) — Hard shell. Eagle balance. Cobra strike. No mercy. 🦀🦅🥋*
