@@ -2,13 +2,17 @@
 
 <div align="center">
 
-![cobraclaw — Hard Shell. Cobra Strike. No Mercy.](https://img.shields.io/badge/cobraclaw-Hard_Shell_Cobra_Strike_No_Mercy-e94560?style=for-the-badge&logoColor=white)
+# 🥋 COBRACLAW
+## Hard Shell. Cobra Strike. No Mercy.
 
 **If OpenClaw was trained by Kreese... and evolved from a crab.**
 
 [![GitHub](https://img.shields.io/badge/GitHub-danieloleary/cobraclaw?style=flat-square&logo=github)](https://github.com/danieloleary/cobraclaw)
 [![Tests](https://img.shields.io/badge/Tests-9%2F9%20passing-ff9500?style=flat-square)](test-skill.sh)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
+
+---
+**👊 STRIKE FIRST. 💥 STRIKE HARD. 🥊 NO MERCY. 🦀🥋**
 
 </div>
 
