@@ -7,7 +7,7 @@
 **If OpenClaw was trained by Kreese... and evolved from a crab.**
 
 [![GitHub](https://img.shields.io/badge/GitHub-danieloleary/cobraclaw?style=flat-square&logo=github)](https://github.com/danieloleary/cobraclaw)
-[![Tests](https://img.shields.io/badge/Tests-9%2F9%20passing-0f0?style=flat-square)](test-skill.sh)
+[![Tests](https://img.shields.io/badge/Tests-9%2F9%20passing-ff9500?style=flat-square)](test-skill.sh)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
 </div>
