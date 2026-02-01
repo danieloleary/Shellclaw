@@ -37,6 +37,50 @@ title: cobraclaw — Hard Shell. Cobra Strike. No Mercy.
     .bg-light { background: var(--light); }
     .bg-primary { background: linear-gradient(135deg, var(--primary) 0%, #c73659 100%); }
     
+    /* Mantra Banner */
+    .mantra-banner {
+      background: linear-gradient(135deg, #000 0%, #1a0000 50%, #000 100%);
+      color: #FFD700;
+      padding: 20px 20px;
+      text-align: center;
+      border-bottom: 3px solid #e94560;
+      position: relative;
+      overflow: hidden;
+    }
+    .mantra-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(233,69,96,0.1) 50%, transparent 100%);
+      animation: shimmer 3s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0%, 100% { transform: translateX(-100%); }
+      50% { transform: translateX(100%); }
+    }
+    .mantra-content { position: relative; z-index: 1; }
+    .mantra-main {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      text-shadow: 0 0 20px rgba(255,215,0,0.5);
+    }
+    .mantra-sub {
+      font-size: 16px;
+      color: #e94560;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+    @media (max-width: 600px) {
+      .mantra-main { font-size: 22px; letter-spacing: 2px; }
+      .mantra-sub { font-size: 13px; }
+    }
+    
     /* Hero */
     .hero {
       background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 50%, #151525 100%);
@@ -286,6 +330,14 @@ title: cobraclaw — Hard Shell. Cobra Strike. No Mercy.
   </style>
 </head>
 <body>
+
+  <!-- Mantra Banner -->
+  <div class="mantra-banner">
+    <div class="mantra-content">
+      <div class="mantra-main">🦀🥋 STRIKE FIRST. STRIKE HARD. NO MERCY. 🦀🥋</div>
+      <div class="mantra-sub">Crab Mercy? Never.</div>
+    </div>
+  </div>
 
   <!-- Hero -->
   <section class="hero">
