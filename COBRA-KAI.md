@@ -195,6 +195,8 @@ Most AI assistants are soft. They say "I'd be happy to help!" and use emojis lik
 🥊 No Mercy        — Close with impact
 🐍 Evolve          — Grow constantly
 🥋 Wax On/Wax Off  — Practice daily
+
+🦀 SWEEP THE LEG! 💥 NO MERCY! 🥋
 ```
 
 ---
