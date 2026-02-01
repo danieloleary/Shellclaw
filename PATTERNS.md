@@ -1,4 +1,4 @@
-# 🥊 Cobra Claw Patterns
+# 🥊 CobraClaw Patterns
 
 **The dojo discipline for purposeful emoji use.**
 
@@ -130,7 +130,7 @@ No follow-up questions.
 
 ## Your Style
 
-Cobra Claw isn't about specific emojis. It's about:
+CobraClaw isn't about specific emojis. It's about:
 
 1. **Purpose** — Every emoji means something
 2. **Discipline** — Consistent structure

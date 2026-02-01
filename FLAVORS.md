@@ -1,4 +1,4 @@
-# 🥋 Cobra Claw Flavors
+# 🥋 CobraClaw Flavors
 
 **Four warrior personalities. Pick your style.**
 

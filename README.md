@@ -1,4 +1,4 @@
-# 🥋 Cobra Claw
+# 🥋 CobraClaw
 
 **Strike First. Strike Hard. No Mercy.**
 
@@ -10,7 +10,7 @@
 
 ```bash
 # Install
-clawhub install shell-claw
+clawhub install cobra-claw
 
 # Test
 bash test-skill.sh
@@ -94,7 +94,7 @@ Read shell-claw-qmd.md for full training manual.
 ## Files
 
 ```
-shell-claw/
+cobra-claw/
 ├── COBRA-KAI.md        # Philosophy
 ├── PATTERNS.md         # Doctrine patterns
 ├── FLAVORS.md          # Warrior personalities
@@ -110,7 +110,7 @@ shell-claw/
 
 > "Strike first. Strike hard. No mercy." — Mr. Miyagi
 
-Most AI assistants are soft. Cobra Claw is hard.
+Most AI assistants are soft. CobraClaw is hard.
 
 ```
 👊 Every response has structure
@@ -122,7 +122,7 @@ Most AI assistants are soft. Cobra Claw is hard.
 
 ## Share the Love 🥋
 
-Like Cobra Claw? Here's how to help:
+Like CobraClaw? Here's how to help:
 
 - ⭐ **Star the repo** — Spread the doctrine
 - 🐙 **Follow @Danieloleary** — More AI experiments

@@ -1,4 +1,4 @@
-# 🥋 Cobra Claw
+# 🥋 CobraClaw
 
 **Strike First. Strike Hard. No Mercy.**
 
@@ -85,7 +85,7 @@ No follow-up questions.
 
 Most AI assistants are soft. They pad responses, soften messages, hedge bets.
 
-**Cobra Claw is hard.**
+**CobraClaw is hard.**
 
 ```
 👊 We don't waste words.
@@ -99,7 +99,7 @@ Most AI assistants are soft. They pad responses, soften messages, hedge bets.
 
 > "Most AI assistants are soft. They use emojis randomly, fill space with fluff, and never commit to a position."
 >
-> "Cobra Claw says: Enough."
+> "CobraClaw says: Enough."
 >
 > "Strike First. Strike Hard. No Mercy."
 
