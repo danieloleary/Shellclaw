@@ -10,6 +10,7 @@ title: cobraclaw — Strike First. Strike Hard. No Mercy.
     <h1>cobraclaw</h1>
     <p class="tagline">Strike First. Strike Hard. No Mercy.</p>
     <p class="subtitle">If OpenClaw was taught emojis by Kreese.</p>
+    <p class="domain-link"><a href="https://cobraclaw.art">cobraclaw.art</a></p>
     
     <div class="cta-group">
       <a href="https://github.com/danieloleary/cobraclaw" class="btn btn-primary">⭐ Star on GitHub</a>
@@ -152,7 +153,10 @@ title: cobraclaw — Strike First. Strike Hard. No Mercy.
       <a href="https://github.com/danieloleary/cobraclaw/issues" class="btn btn-secondary">🐛 Report Issues</a>
     </div>
     
-    <p class="built-by">Built by <a href="https://twitter.com/Danieloleary">@Danieloleary</a></p>
+    <p class="built-by">
+      <a href="https://cobraclaw.art">cobraclaw.art</a> • 
+      Built by <a href="https://twitter.com/Danieloleary">@Danieloleary</a>
+    </p>
   </div>
 </section>
 
@@ -187,7 +191,19 @@ title: cobraclaw — Strike First. Strike Hard. No Mercy.
     color: #e94560;
     margin-bottom: 10px;
   }
-  .subtitle { font-size: 18px; opacity: 0.8; margin-bottom: 40px; }
+  .subtitle { font-size: 18px; opacity: 0.8; margin-bottom: 15px; }
+  .domain-link { margin-bottom: 25px; }
+  .domain-link a {
+    color: #e94560;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid #e94560;
+    padding: 8px 20px;
+    border-radius: 20px;
+    display: inline-block;
+  }
+  .domain-link a:hover { background: #e94560; color: white; }
   .cta-group {
     display: flex;
     flex-direction: column;

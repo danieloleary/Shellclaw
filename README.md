@@ -4,7 +4,7 @@
 
 *If OpenClaw was taught emojis by Kreese.*
 
-[GitHub](https://github.com/danieloleary/cobraclaw) • [Landing Page](https://danieloleary.github.io/cobraclaw/) • [Install](clawhub install cobra-claw)
+[🌐 cobraclaw.art](https://cobraclaw.art) • [GitHub](https://github.com/danieloleary/cobraclaw) • [Install](clawhub install cobra-claw)
 
 ---
 
