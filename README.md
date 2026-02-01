@@ -1,75 +1,103 @@
 # 🦀🥋 cobraclaw
 
-**Hard Shell. Cobra Strike. No Mercy.**
+<div align="center">
 
-*If OpenClaw was trained by Kreese... and evolved from a crab.*
+![cobraclaw — Hard Shell. Cobra Strike. No Mercy.](https://img.shields.io/badge/cobraclaw-Hard_Shell_Cobra_Strike_No_Mercy-e94560?style=for-the-badge&logoColor=white)
 
-[🌐 cobraclaw.art](https://cobraclaw.art) • [GitHub](https://github.com/danieloleary/cobraclaw) • [Install](clawhub install cobra-claw)
+**If OpenClaw was trained by Kreese... and evolved from a crab.**
+
+[![GitHub](https://img.shields.io/badge/GitHub-danieloleary/cobraclaw?style=flat-square&logo=github)](https://github.com/danieloleary/cobraclaw)
+[![Tests](https://img.shields.io/badge/Tests-9%2F9%20passing-0f0?style=flat-square)](test-skill.sh)
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
+
+</div>
 
 ---
 
-## The Problem
+## 🎯 The Problem
 
-Your AI assistant is soft. Hesitant. Forgettable.
+Your AI assistant is **soft**. No armor. No defense. No impact.
 
-```
+```text
 ❌ "Great question! 😊 I'd be happy to help! 👍"
 ```
 
-Random emojis. No personality. No impact.
+Random emojis. Hesitant language. Forgettable.
 
-## The Solution
+## ✅ The Solution
 
 **cobraclaw gives your AI a dojo discipline.**
 
-```
+```text
 👊 Great question! 💥 Here's the deal:
 💡 Key insight: Three paths. Only one wins.
 ⚡ My pick: Path two.
 👊 Done. Your move. 🥊
 ```
 
+Hard shell protection. Cobra strike precision. No mercy commitment.
+
 ---
 
-## The Five Pillars
+## 🥋 The Five Pillars
 
-| Pillar | Meaning | Application |
-|--------|---------|-------------|
-| 🦀 **Hard Shell** | Protection for your voice | Open with presence |
-| 🦅 **Eagle Fang** | Balance + honor + strength | Strike with purpose |
-| 💥 **Cobra Strike** | Precision, speed | Every word lands |
-| ↔️ **Sideways** | Unpredictability | Don't follow patterns |
-| 🥊 **No Mercy** | Commitment | Finish strong |
-| 🐍 **Evolve** | Growth | Constant improvement |
+<div align="center">
 
-### Training: Wax On, Wax Off
+| 🦀 | 🦅 | 💥 | 🥊 | 🐍 |
+|:--:|:--:|:--:|:--:|:--:|
+| **Hard Shell** | **Eagle Fang** | **Cobra Strike** | **No Mercy** | **Evolve** |
+| Protection | Balance | Precision | Commitment | Growth |
 
-> "Wax on, wax off." — Mr. Miyagi
+</div>
 
-Daily practice builds mastery.
+### Quick Reference
 
 ```
-🥋 Wax On  → Establish presence (10 reps)
-💥 Wax Off → Strike with precision (10 reps)
-🦅 Balance → Eagle Fang harmony (5 reps)
-🔄 Repeat  → Mastery through repetition
+👊 Strike First    → Open with power
+🦅 Eagle Fang      → Balance with strength
+💥 Strike Hard     → Precision in every word
+↔️ Sideways        → Move unpredictable
+🥊 No Mercy        → Close with impact
+🐍 Evolve          → Grow constantly
+🥋 Wax On/Wax Off  → Practice daily
+```
+
+> **"NO MERCY! SWEEP THE LEG!"** — 🦀🥋🦅
+
+---
+
+## 🦀 Personalities
+
+Choose your warrior style:
+
+| Icon | Name | Traits | Quote |
+|:----:|:-----|:-------|:------|
+| 🥋 | **Sensei Shell** | Balanced, protective | "Your shell is your strength." |
+| 🦅 | **Eagle Fang** | Balance + honor | "Strike first, with honor." |
+| 😤 | **Aggressive Claw** | Strike first | "No time for pleasantries." |
+| 🧘 | **Defensive Carapace** | Calculate, snap | "Hold. Analyze. Strike." |
+| 🏯 | **Merciless Fang** | Efficiency | "Answer: Path two. Done." |
+
+---
+
+## 📦 What's Inside
+
+```
+cobraclaw/
+├── 🦀 COBRA-KAI.md        ← Philosophy & origin
+├── 📚 RESEARCH.md         ← Theme research
+├── 📋 PATTERNS.md         ← Doctrine patterns
+├── 🎭 FLAVORS.md          ← 5 warrior personalities
+├── 📝 PROMPTS.md         ← 10 templates
+├── 📇 QUICK-REF.md       ← Dojo reference card
+├── 📖 shell-claw-qmd.md  ← Training manual
+├── 🌐 index.md           ← Landing page
+└── ✅ test-skill.sh      ← 9 tests
 ```
 
 ---
 
-## Five Personalities
-
-| Personality | Traits | Quote |
-|-------------|--------|-------|
-| **🥋 Sensei Shell** | Balanced, protective | "Your shell is your strength." |
-| **🦅 Eagle Fang** | Balance + honor | "Strike first, with honor." |
-| **😤 Aggressive Claw** | Strike first | "No time for pleasantries." |
-| **🧘 Defensive Carapace** | Calculate, then snap | "Hold. Let me analyze..." |
-| **🏯 Merciless Fang** | Efficiency | "Answer: Path two. Done." |
-
----
-
-## Quick Start
+## 🚀 Quick Start
 
 ```bash
 # Clone
@@ -86,39 +114,60 @@ Add "cobra-claw" to your skill list
 
 ---
 
-## Files
+## 🎓 Training: Wax On, Wax Off
+
+> "Wax on, wax off." — Mr. Miyagi
+
+Daily practice builds mastery:
 
 ```
-cobraclaw/
-├── COBRA-KAI.md        # Philosophy & origin
-├── RESEARCH.md         # Theme research
-├── PATTERNS.md         # Doctrine patterns
-├── FLAVORS.md          # Warrior personalities
-├── PROMPTS.md          # Template library
-├── QUICK-REF.md        # Dojo reference
-├── shell-claw-qmd.md   # Training manual
-├── index.md            # Landing page
-└── test-skill.sh       # Tests
+Round 1: 👊 Wax on  → Establish presence (10 reps)
+Round 2: 💥 Wax off → Strike with precision (10 reps)  
+Round 3: 🦅 Balance → Eagle Fang harmony (5 reps)
+Round 4: 🔄 Repeat  → Mastery through repetition
 ```
 
 ---
 
-## The Dojo Code
+## 📖 The Dojo Code
 
-1. Protect your shell — Your voice is your armor
-2. Strike without warning — Move sideways, be unpredictable
-3. Strike with precision — Every word lands
-4. No mercy — Commit fully
-5. Evolve constantly — Shed skin, grow stronger
-
----
-
-## Share the Love 🦀🥋
-
-- ⭐ **[Star the repo](https://github.com/danieloleary/cobraclaw)**
-- 🐙 **[Follow @Danieloleary](https://twitter.com/Danieloleary)**
-- 🐛 **[Report issues](https://github.com/danieloleary/cobraclaw/issues)**
+1. 🦀 **Protect your shell** — Your voice is your armor
+2. 💥 **Strike with precision** — Every word lands
+3. ↔️ **Move sideways** — Be unpredictable
+4. 🥊 **No mercy** — Commit fully
+5. 🐍 **Evolve constantly** — Shed skin, grow stronger
+6. 🦅 **Find balance** — Eagle Fang harmony
+7. 🥋 **Practice daily** — Wax on, wax off
 
 ---
 
-*Built by [@Danieloleary](https://twitter.com/Danieloleary) — Hard shell. Eagle balance. Cobra strike. No mercy. 🦀🦅🥋*
+## 🎯 When to Use
+
+- Build decisive AI voice
+- Cut through fluff and pleasantries
+- Every response must commit
+- Command respect, not likability
+- Unpredictable, memorable presence
+- Balance power with protection
+
+---
+
+## 🤝 Share the Love
+
+<div align="center">
+
+⭐ **[Star the repo](https://github.com/danieloleary/cobraclaw)**  
+🐙 **[Follow @Danieloleary](https://twitter.com/Danieloleary)**  
+🐛 **[Report issues](https://github.com/danieloleary/cobraclaw/issues)**
+
+</div>
+
+---
+
+<div align="center">
+
+**🦀 Hard shell. Eagle balance. Cobra strike. No mercy. 🥋**
+
+*Built with 🥋 by [@Danieloleary](https://twitter.com/Danieloleary)*
+
+</div>
