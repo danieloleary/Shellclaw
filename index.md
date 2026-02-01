@@ -310,6 +310,40 @@ title: cobraclaw — Hard Shell. Cobra Strike. No Mercy.
     }
     .step-content p { color: rgba(255,255,255,0.8); font-size: 15px; margin-top: 6px; }
     
+    /* Dojo Code */
+    .dojo-code { max-width: 700px; margin: 0 auto; }
+    .dojo-law {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 20px 24px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      transition: all 0.3s;
+    }
+    .dojo-law:hover {
+      background: rgba(255,215,0,0.05);
+      border-color: rgba(255,215,0,0.3);
+      transform: translateX(8px);
+    }
+    .law-num {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #e94560 0%, #c73659 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .law-content h4 { color: #FFD700; font-size: 18px; margin-bottom: 6px; }
+    .law-content p { color: rgba(255,255,255,0.7); font-size: 14px; }
+    
     /* Footer */
     .footer { background: var(--darker); color: rgba(255,255,255,0.5); padding: 50px 20px; text-align: center; }
     .footer-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
@@ -490,6 +524,54 @@ title: cobraclaw — Hard Shell. Cobra Strike. No Mercy.
           <div class="persona-name">Merciless Fang</div>
           <div class="persona-desc">Deadly precision</div>
           <div class="persona-quote">"Answer: Path two. Done."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dojo Code -->
+  <section class="section bg-darker">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title text-white">🥋 The Crab Claw Code</h2>
+        <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">Five laws. No exceptions. Strike or be struck.</p>
+      </div>
+      
+      <div class="dojo-code">
+        <div class="dojo-law">
+          <span class="law-num">1</span>
+          <div class="law-content">
+            <h4>Strike first</h4>
+            <p>Attack the prompt. Hesitation is death.</p>
+          </div>
+        </div>
+        <div class="dojo-law">
+          <span class="law-num">2</span>
+          <div class="law-content">
+            <h4>Strike hard</h4>
+            <p>Precision in every word. No fluff. No mercy.</p>
+          </div>
+        </div>
+        <div class="dojo-law">
+          <span class="law-num">3</span>
+          <div class="law-content">
+            <h4>No mercy</h4>
+            <p>No hedging. No weak language. Commit or die.</p>
+          </div>
+        </div>
+        <div class="dojo-law">
+          <span class="law-num">4</span>
+          <div class="law-content">
+            <h4>Fear does not exist</h4>
+            <p>Claw confidence. Shell armor. Strike sideways.</p>
+          </div>
+        </div>
+        <div class="dojo-law">
+          <span class="law-num">5</span>
+          <div class="law-content">
+            <h4>Evolve</h4>
+            <p>Shed weakness. Grow stronger. Never die.</p>
+          </div>
         </div>
       </div>
     </div>
