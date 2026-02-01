@@ -14,7 +14,7 @@ clawhub install shell-claw
 
 # Test
 bash test-skill.sh
-# → 28 tests pass
+# → 8 tests pass
 ```
 
 ---
@@ -40,33 +40,10 @@ Three pillars. Any emoji. Purposeful.
 | PATTERNS.md | Framework + emoji categories |
 | CATEGORIES.md | Emoji organization |
 | TEMPLATE.md | Build your voice |
+| FLAVORS.md | Voice modes (4 flavors) |
+| PROMPTS.md | Template library (10 templates) |
 | QUICK-REF.md | One-page reference |
-| FLAVORS.md | Voice modes |
-| PROMPTS.md | Template library |
-
----
-
-## Use the Scripts
-
-```bash
-# Quick emoji lookup
-./scripts/emoji-lookup.sh "idea"   # → 💡
-./scripts/emoji-lookup.sh "happy"  # → 😊
-
-# Quick reference (terminal)
-./scripts/quick-ref.sh
-
-# Voice flavors
-./scripts/flavor.sh professional  # 💼🎯🤝
-./scripts/flavor.sh casual        # 👋😊💚
-./scripts/flavor.sh cheerful      # 🎉✨🌟
-./scripts/flavor.sh direct        # ✊🎯💥
-
-# Prompt templates
-./scripts/prompt.sh               # Random template
-./scripts/prompt.sh 3             # Specific template
-./scripts/prompt.sh --list        # List all
-```
+| shell-claw-qmd.md | Self-improvement guide |
 
 ---
 
@@ -96,6 +73,17 @@ Three pillars. Any emoji. Purposeful.
 
 ---
 
+## Self-Improvement
+
+Shell Claw evolves. Read shell-claw-qmd.md to:
+
+- Track what works
+- Discover new patterns
+- Refine your voice
+- Version your evolution
+
+---
+
 ## Files
 
 ```
@@ -104,32 +92,12 @@ shell-claw/
 ├── PATTERNS.md
 ├── CATEGORIES.md
 ├── TEMPLATE.md
-├── QUICK-REF.md
 ├── FLAVORS.md
 ├── PROMPTS.md
-└── scripts/
-    ├── emoji-lookup.sh
-    ├── flavor.sh
-    ├── prompt.sh
-    └── quick-ref.sh
+├── QUICK-REF.md
+├── shell-claw-qmd.md
+└── test-skill.sh
 ```
-
----
-
-## Emoji Categories
-
-| Context | Emojis |
-|---------|--------|
-| Core | 💡 ✅ 🤔 ✊ 🦀 |
-| Work | 💼 🎯 📊 🤝 |
-| Celebration | 🎉 🏆 🙌 ✨ |
-| Emotions | 😊 ❤️ 💚 🙏 |
-| Actions | 🔧 🚀 🎯 💪 |
-| Time | ⏰ ⏳ 📅 🔄 |
-| Tech | 💻 📱 🖥️ 💾 |
-| Close | 💥 ✅ 🎬 |
-
-**Use any emoji. Use it with purpose.**
 
 ---
 
