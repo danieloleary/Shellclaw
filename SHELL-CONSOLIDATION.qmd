@@ -1,0 +1,162 @@
+# 🗑️ SHELL-CONSOLIDATION.qmd
+
+🔧 QMD TAGS: CLEANUP, ORGANIZATION, SHELL, DEPRECATION, COBRACLAW
+
+---
+
+## 🦀 Overview
+
+**Shell Script Sprawl Elimination** - Consolidate all standalone `.sh` scripts into QMD files. No more scattered shell files. All functionality documented and embedded in QMD.
+
+**Key Problem:**
+- Too many standalone `.sh` files scattered across workspace
+- Hard to maintain, document, and version
+- Not consistent with QMD-first approach
+
+**Solution:**
+- Embed scripts in their corresponding QMD files
+- Deprecate standalone `.sh` files
+- Keep only essential QMD files
+
+---
+
+## 💥 Current State
+
+### Standalone .sh Files (TO BE CONSOLIDATED)
+
+| File | Purpose | QMD Home |
+|------|---------|----------|
+| `cobra-mode.sh` | Activate Cobra Mode | PREEMPTIVE-STRIKES.qmd |
+| `patrol.sh` | Run system patrols | PREEMPTIVE-STRIKES.qmd |
+| `quotes.sh` | Quote management | QUOTES.qmd |
+| `ralph.sh` | Ralph Loop runner | (keep as tool) |
+| `test-skill.sh` | Test runner | (keep as tool) |
+| `trophies.sh` | Trophy management | TROPHIES.qmd |
+| `enrich-atomic-facts.sh` | Atomic facts extraction | ATOMIC-FACTS-SYSTEM.qmd |
+| `test-atomic-facts-xargs.sh` | Test for xargs bug | ATOMIC-FACTS-SYSTEM.qmd |
+| `test-model-indicator.sh` | Test for model indicator | how-i-work.qmd |
+
+---
+
+## ✅ Consolidation Status
+
+| Script | Status | QMD Location |
+|--------|--------|--------------|
+| cobra-mode.sh | ⏳ Pending | PREEMPTIVE-STRIKES.qmd |
+| patrol.sh | ⏳ Pending | PREEMPTIVE-STRIKES.qmd |
+| quotes.sh | ⏳ Pending | QUOTES.qmd |
+| trophies.sh | ⏳ Pending | TROPHIES.qmd |
+| enrich-atomic-facts.sh | ⏳ Pending | ATOMIC-FACTS-SYSTEM.qmd |
+| test-*.sh | ⏳ Pending | Embedded in relevant QMD |
+
+---
+
+## 🥋 Implementation Notes
+
+### Files to Keep (Essential Tools)
+
+These remain as standalone scripts because they're CLI tools:
+
+- `ralph.sh` - Ralph Loop runner (project-level tool)
+- `test-skill.sh` - Test runner (project-level tool)
+
+### Files to Consolidate
+
+Everything else → Embed in QMD files under "Implementation Notes"
+
+### Migration Pattern
+
+**Before (standalone .sh):**
+```bash
+#!/bin/bash
+echo "Hello"
+```
+
+**After (embedded in QMD):**
+```markdown
+### Shell Script (embedded)
+```bash
+#!/bin/bash
+echo "Hello"
+```
+```
+
+---
+
+## 🎯 Migration Steps
+
+### Step 1: Identify
+List all `.sh` files and their purpose.
+
+### Step 2: Match
+Find or create the corresponding QMD file.
+
+### Step 3: Embed
+Move script content into QMD under "Implementation Notes".
+
+### Step 4: Deprecate
+Add deprecation notice to old `.sh` file.
+
+### Step 5: Update
+Update test references to use QMD instead of `.sh`.
+
+---
+
+## 📖 Cobra Kai Vibes
+
+> "Too many weapons dilutes the master. One tool, mastered."
+> — The Creed
+
+**Philosophy:**
+```
+🎯 One source of truth (QMD)
+📖 Documentation lives with code
+🧹 Clean workspace
+✅ Tests embedded
+```
+
+---
+
+## 🔄 Evolution Path
+
+| Level | Feature | Status |
+|-------|---------|--------|
+| 1 | Inventory all .sh files | ✅ Done |
+| 2 | Create master QMD | ⏳ Next |
+| 3 | Consolidate core scripts | ⏳ Pending |
+| 4 | Deprecate old files | ⏳ Pending |
+| 5 | QMD-only workspace | ⏳ Future |
+
+---
+
+## 🔄 Test Strikes
+
+```bash
+# Count standalone .sh files
+ls ~/.openclaw/workspace/cobraclaw/*.sh | wc -l
+ls ~/.openclaw/workspace/scripts/*.sh | wc -l
+
+# Count QMD files
+ls ~/.openclaw/workspace/cobraclaw/*.qmd | wc -l
+
+# Goal: QMD count >> .sh count
+```
+
+---
+
+## 🔄 Complete
+
+**QMD: SHELL-CONSOLIDATION System**
+- 📋 Inventory of all .sh files
+- 🎯 Migration path to QMD
+- 🧹 Elimination of sprawl
+- ✅ Tests embedded in QMD
+
+**Commit:** `QMD: SHELL-CONSOLIDATION - No more shell script sprawl! All in QMD! 🗑️`
+
+---
+
+**🗑️ "One tool. One purpose. One file." 🗑️**
+
+# @qmd:tags=cleanup,shell,scripts,consolidation,organization,cobraclaw
+# @qmd:version=1.0

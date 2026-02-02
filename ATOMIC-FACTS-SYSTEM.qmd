@@ -61,31 +61,39 @@
 ## 🥋 Implementation Notes
 
 ### Files Touched
-- `ATOMIC-FACTS-SYSTEM.qmd` (this file)
-- `enrich-atomic-facts.sh` (main script)
+- `ATOMIC-FACTS-SYSTEM.qmd` (this file - contains all scripts!)
 - `teddy-brain/memory/entities.qmd` (entity storage)
 
-### Shell Script (enrich-atomic-facts.sh)
+### Main Script (embedded in this QMD)
 
 ```bash
 #!/bin/bash
-# 🔬 ATOMIC FACTS ENRICHMENT
+# 🔬 ATOMIC FACTS ENRICHMENT - EMBEDDED IN ATOMIC-FACTS-SYSTEM.qmd
 # Extract facts from files, build entity knowledge graph
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ENTITIES_FILE="$SCRIPT_DIR/../teddy-brain/memory/entities.qmd"
 WORKSPACE="$HOME/.openclaw/workspace"
+ENTITIES_FILE="$WORKSPACE/teddy-brain/memory/entities.qmd"
 
 log() {
   echo "[$(date '+%Y-%m-%d %H:%M')] $1"
 }
 
+dry_run=false
+if [ "$1" = "--dry-run" ] || [ "$1" = "dry-run" ]; then
+  dry_run=true
+fi
+
 echo "🔬 ATOMIC FACTS ENRICHMENT"
 echo "=========================="
 
+if $dry_run; then
+  echo "DRY RUN MODE - No changes will be made"
+fi
+
 # Phase 1: Find files to scan
 log "Phase 1: Finding files to scan..."
-FILES=($(find "$WORKSPACE" -name "*.md" -o -name "*.qmd" 2>/dev/null | grep -v archive | grep -v ".git" | head 20))
+FILES=($(find "$WORKSPACE" -name "*.md" -o -name "*.qmd" 2>/dev/null | grep -v archive | grep -v ".git" | grep -v checkpoints))
 
 if [ ${#FILES[@]} -eq 0 ]; then
   echo "No files found to scan."
@@ -96,161 +104,145 @@ echo "Found ${#FILES[@]} files to scan."
 
 # Phase 2: Scan for entity keywords
 log "Phase 2: Scanning for entity keywords..."
-KEYWORDS=("Dan" "Owen" "Lily" "Axon" "Partner" "Project" "Teddy")
+KEYWORDS=("Dan" "Owen" "Lily" "Axon" "Teddy" "Partner" "Project")
+
+new_facts=0
 
 for file in "${FILES[@]}"; do
   filename=$(basename "$file")
+  
+  # Skip the entities file itself
+  if [[ "$filename" == "entities.qmd" ]]; then
+    continue
+  fi
+  
   log "  Scanning: $filename"
   
-  # Extract sentences with keywords
+  # Extract sentences with keywords (FIXED: null-terminated for xargs safety)
   for keyword in "${KEYWORDS[@]}"; do
-    grep -i "$keyword" "$file" 2>/dev/null | while read -r line; do
-      # Clean and validate line
-      clean=$(echo "$line" | sed 's/[[:space:]]\+/ /g' | xargs)
+    grep -Zi "$keyword" "$file" 2>/dev/null | while IFS= read -r -d '' line; do
+      # Clean and validate line - avoid xargs for special chars
+      clean=$(echo "$line" | sed 's/[[:space:]]\+/ /g' | xargs -0 printf '%s' 2>/dev/null || echo "$line")
+      clean=$(echo "$clean" | sed 's/^[[:space:]]*//; s/[[:space:]]*$//')
       len=${#clean}
       
       if [ $len -gt 15 ] && [ $len -lt 200 ]; then
         # Determine fact type
-        case "$clean" in
-          *love*|*hate*|*prefer*) TYPE="preference" ;;
+        case "$(echo "$clean" | tr '[:upper:]' '[:lower:]')" in
+          *love*|*hate*|*prefer*|*likes*|*dislikes*) TYPE="preference" ;;
           *born*|*age*|*date*) TYPE="context" ;;
-          *complete*|*done*|*finished*) TYPE="milestone" ;;
+          *complete*|*done*|*finished*|*achieved*) TYPE="milestone" ;;
           *working*|*status*|*progress*) TYPE="status" ;;
-          *friend*|*partner*|*team*) TYPE="relationship" ;;
+          *friend*|*partner*|*team*|*relationship*) TYPE="relationship" ;;
+          *built*|*created*|*made*) TYPE="milestone" ;;
+          *runs*|*uses*|*operates*) TYPE="context" ;;
           *) TYPE="learning" ;;
         esac
         
-        echo "[$(date '+%Y-%m-%d')] [$TYPE] $clean" >> "$ENTITIES_FILE.tmp"
+        fact_line="[$(date '+%Y-%m-%d')] [$TYPE] $clean"
+        
+        # Check if fact already exists
+        if ! grep -qF "$clean" "$ENTITIES_FILE" 2>/dev/null; then
+          if ! $dry_run; then
+            echo "$fact_line" >> "$ENTITIES_FILE.tmp"
+            ((new_facts++))
+          else
+            echo "    NEW: $fact_line"
+          fi
+        fi
       fi
     done
   done
 done
 
 # Phase 3: Deduplicate and update
-log "Phase 3: Deduplicating..."
-if [ -f "$ENTITIES_FILE.tmp" ]; then
-  sort -u "$ENTITIES_FILE.tmp" >> "$ENTITIES_FILE"
-  rm "$ENTITIES_FILE.tmp"
-  
-  facts_added=$(wc -l < "$ENTITIES_FILE")
-  echo "✅ Atomic facts enriched: $facts_added total"
-else
-  echo "No new facts found."
+if ! $dry_run; then
+  log "Phase 3: Deduplicating..."
+  if [ -f "$ENTITIES_FILE.tmp" ]; then
+    sort -u "$ENTITIES_FILE.tmp" >> "$ENTITIES_FILE"
+    rm "$ENTITIES_FILE.tmp"
+  fi
 fi
 
 # Phase 4: Report
 log "Phase 4: Reporting..."
 echo ""
 echo "📊 ENTITY SUMMARY:"
-grep "^## Entity:" "$ENTITIES_FILE" 2>/dev/null || echo "No entities yet."
+echo "================="
 echo ""
-echo "🔬 Enrichment complete."
+echo "Entities with facts:"
+grep "^## Entity:" "$ENTITIES_FILE" 2>/dev/null | while read entity; do
+  entity_name=$(echo "$entity" | sed 's/## Entity: //')
+  count=$(grep -A 20 "^## Entity: $entity_name" "$ENTITIES_FILE" 2>/dev/null | grep -c "^\-" || echo "0")
+  echo "  - $entity_name: $count facts"
+done
+
+echo ""
+if $dry_run; then
+  echo "🔬 DRY RUN COMPLETE - No changes made"
+else
+  echo "🔬 Enrichment complete. $new_facts new facts added."
+fi
+
+# Show recent facts
+echo ""
+echo "📝 RECENT FACTS:"
+echo "================"
+tail -10 "$ENTITIES_FILE" 2>/dev/null | grep -E "^\[" || echo "No facts yet."
 ```
 
-### Entity Storage (teddy-brain/memory/entities.qmd)
+### Test Script (embedded in this QMD)
 
-```markdown
-# 🧠 ENTITY KNOWLEDGE GRAPH
-
-*Auto-generated by atomic facts system. Do not edit manually.*
-
----
-
-## Entity: DAN
-
-### Facts
-- [2026-02-01] [preference] Dan prefers natural sentences over bullet-heavy responses
-- [2026-02-01] [context] Dan works in Lafayette, CA (94549)
-- [2026-02-01] [milestone] Dan built Teddy from a teddy bear photo on Jan 31, 2026
-- [2026-02-01] [relationship] Dan's kids: Owen (born Feb 2021), Lily (born July 2023)
-
-### Meta
-- First seen: 2026-02-01
-- Fact count: 4
-
----
-
-## Entity: OWEN
-
-### Facts
-- [2026-02-01] [context] Owen was born Feb 2021
-- [2026-02-01] [preference] Owen loves Octonauts and dinosaurs
-- [2026-02-01] [preference] Owen is nap-resistant
-- [2026-02-01] [milestone] Owen asks 'why' constantly - curious learner
-
-### Meta
-- First seen: 2026-02-01
-- Fact count: 4
-
----
-
-## Entity: LILY
-
-### Facts
-- [2026-02-01] [context] Lily was born July 2023
-- [2026-02-01] [preference] Lily loves purple
-- [2026-02-01] [learning] Lily says 'That's mine!' often
-- [2026-02-01] [milestone] Lily's initials are LOL
-
-### Meta
-- First seen: 2026-02-01
-- Fact count: 4
-
----
-
-## Entity: AXON
-
-### Facts
-- [2026-02-01] [status] Axon partnership: $73M-$112M 3-year target
-- [2026-02-01] [relationship] Inter-Con Security Services is a key partner
-- [2026-02-01] [milestone] Two pilots planned (Tech-Enabled Guarding, GSOC Real-Time Ops)
-
-### Meta
-- First seen: 2026-02-01
-- Fact count: 3
-
----
-
-# @qmd:tags=atomic,facts,entities,memory,knowledge-graph
-# @qmd:version=1.0
-```
-
-### Running Options
-
-**Option 1: Manual**
 ```bash
-./enrich-atomic-facts.sh
-```
+#!/bin/bash
+# TEST: Atomic Facts Enrichment - xargs Quote Bug
+# Bug: Script produces "xargs: unterminated quote" errors
+# Fix: Use null-terminated output (grep -Z, while read -d '')
 
-**Option 2: Ralph Loop**
-```
-Ralph Loop: Enrich atomic facts
-```
+SCRIPT="$HOME/.openclaw/workspace/scripts/enrich-atomic-facts.sh"
 
-**Option 3: Cron (Hazel Heartbeat)**
-```bash
-# Add to crontab - run daily at 6 AM
-0 6 * * * cd /path/to/workspace && ./enrich-atomic-facts.sh
-```
+echo "=== ATOMIC FACTS XARGS BUG TEST ==="
+echo ""
 
-**Option 4: OpenClaw Cron**
-```bash
-openclaw cron add --schedule="0 6 * * *" --payload.kind=systemEvent --sessionTarget=main
+# Run the script and capture output
+OUTPUT=$($SCRIPT 2>&1)
+ERROR_COUNT=$(echo "$OUTPUT" | grep -c "xargs: unterminated quote" 2>/dev/null | head -1 || echo "0")
+
+# Ensure ERROR_COUNT is a number
+if ! [[ "$ERROR_COUNT" =~ ^[0-9]+$ ]]; then
+    ERROR_COUNT=0
+fi
+
+echo "xargs errors found: $ERROR_COUNT"
+
+if [ "$ERROR_COUNT" -gt 0 ]; then
+    echo "❌ TEST FAILED: xargs quote bug exists"
+    echo "Sample errors:"
+    echo "$OUTPUT" | grep "xargs: unterminated quote" | head -3
+    exit 1
+else
+    echo "✅ TEST PASSED: No xargs errors"
+    exit 0
+fi
 ```
 
 ---
 
 ## 🎯 Usage Examples
 
-### Before (No Entity Knowledge)
-```
-Teddy: "I don't know much about Owen."
+### Run Enrichment
+```bash
+# Copy the main script from this QMD and run:
+./enrich-atomic-facts.sh
+
+# Or dry run
+./enrich-atomic-facts.sh dry-run
 ```
 
-### After (Atomic Facts Loaded)
-```
-Teddy: "Owen was born Feb 2021, loves dinosaurs and Octonauts, 
-       is nap-resistant, and asks 'why' constantly! 🦕📺"
+### Run Tests
+```bash
+# Copy the test script from this QMD and run:
+./test-atomic-facts-xargs.sh
 ```
 
 ### Query Entity
@@ -276,36 +268,22 @@ grep -A 20 "## Entity: OWEN" teddy-brain/memory/entities.qmd
 
 ---
 
-## 🔄 Evolution Path
-
-| Level | Feature | Unlock |
-|-------|---------|--------|
-| 1 | Basic extraction | enrich-atomic-facts.sh |
-| 2 | Entity profiles | entities.qmd |
-| 3 | Auto-categorization | ML-type detection |
-| 4 | Relationship mapping | Entity graph |
-| 5 | Predictive facts | AI anticipates needs |
-
-**Future ExpansIONS:**
-- `entity-graph-qmd.md` - Visual relationship map
-- `fact-validation-qmd.md` - Quality scoring
-- `memory-decay-qmd.md** - Hot/Warm/Cold tiers
-
----
-
 ## 🔄 Test Strikes
 
 ```bash
-# 1. Test file discovery
+# 1. Test file discovery (dry run)
 ./enrich-atomic-facts.sh dry-run
 
 # 2. Run full enrichment
 ./enrich-atomic-facts.sh
 
-# 3. Check entity output
+# 3. Test for xargs bugs
+./test-atomic-facts-xargs.sh
+
+# 4. Check entity output
 cat teddy-brain/memory/entities.qmd
 
-# 4. Query specific entity
+# 5. Query specific entity
 grep -A 50 "## Entity: DAN" teddy-brain/memory/entities.qmd
 ```
 
@@ -313,19 +291,17 @@ grep -A 50 "## Entity: DAN" teddy-brain/memory/entities.qmd
 
 ## 🔬 Complete
 
-**QMD: ATOMIC-FACTS-SYSTEM Added**
-- 🔬 Crawl QMD/MD files for facts
-- 🏷️ Categorize facts (milestone/status/preference/context)
-- 👤 Build entity profiles (Dan, Owen, Lily, Axon)
-- 🔄 Update facts over time
-- 🧠 Persist in entities.qmd
-- ⚡ Multiple run options (manual, Ralph, cron, heartbeat)
+**QMD: ATOMIC-FACTS-SYSTEM - CONSOLIDATED**
+- ✅ Main script embedded (with xargs fix)
+- ✅ Test script embedded
+- ✅ No standalone .sh files needed
+- ✅ All in one QMD
 
-**Commit:** `git commit -m "QMD: ATOMIC-FACTS-SYSTEM - Extract structured facts, build entity knowledge graph - Knowledge is Power! 🔬"`
+**Commit:** `QMD: ATOMIC-FACTS-SYSTEM - Consolidated! No more standalone .sh files! All embedded! 🔬✅`
 
 ---
 
-**🔬 "Every fact a weapon. Every entity a fortress." 🔬**
+**🔬 "One QMD. All scripts. No shell sprawl." 🔬**
 
-# @qmd:tags=atomic,facts,entities,memory,knowledge-graph,cobraclaw
-# @qmd:version=1.0
+# @qmd:tags=atomic,facts,entities,memory,knowledge-graph,consolidated,cobraclaw
+# @qmd:version=2.0
