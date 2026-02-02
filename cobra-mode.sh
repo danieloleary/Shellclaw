@@ -49,3 +49,4 @@ else
   echo "🐍 COBRA MODE ACTIVATED"
   echo "Usage: ./cobra-mode.sh '<command>'"
 fi
+# DEPRECATED: Use PREEMPTIVE-STRIKES.qmd instead (cobra-mode strike() function embedded)

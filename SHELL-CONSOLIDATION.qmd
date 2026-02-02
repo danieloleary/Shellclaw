@@ -38,22 +38,30 @@
 
 ---
 
-## ✅ Consolidation Status
+## ✅ Consolidation Status (v1.1 - 2026-02-01 19:45)
 
 | Script | Status | QMD Location |
 |--------|--------|--------------|
 | enrich-atomic-facts.sh | ✅ EMBEDDED | ATOMIC-FACTS-SYSTEM.qmd |
 | test-atomic-facts-xargs.sh | ✅ EMBEDDED | ATOMIC-FACTS-SYSTEM.qmd |
+| cobra-mode.sh | ✅ EMBEDDED | PREEMPTIVE-STRIKES.qmd |
+| patrol.sh | ✅ EMBEDDED | PREEMPTIVE-STRIKES.qmd |
+| quotes.sh | ✅ EMBEDDED | QUOTES.qmd |
+| trophies.sh | ✅ EMBEDDED | TROPHIES.qmd |
 | test-model-indicator.sh | ⏳ Pending | how-i-work.qmd |
-| cobra-mode.sh | ⏳ Pending | PREEMPTIVE-STRIKES.qmd |
-| patrol.sh | ⏳ Pending | PREEMPTIVE-STRIKES.qmd |
-| quotes.sh | ⏳ Pending | QUOTES.qmd |
-| trophies.sh | ⏳ Pending | TROPHIES.qmd |
 
-### Completed (v1.0 - 2026-02-01 19:30)
-- ✅ SHELL-CONSOLIDATION.qmd master created
-- ✅ ATOMIC-FACTS-SYSTEM.qmd v2 (embedded scripts, xargs fix)
-- ✅ 3 scripts deprecated (enrich-atomic-facts.sh, test-*.sh)
+### Deprecated Scripts
+The following have deprecation notices pointing to their QMD home:
+- `cobra-mode.sh` → PREEMPTIVE-STRIKES.qmd
+- `patrol.sh` → PREEMPTIVE-STRIKES.qmd
+- `enrich-atomic-facts.sh` → ATOMIC-FACTS-SYSTEM.qmd
+- `test-atomic-facts-xargs.sh` → ATOMIC-FACTS-SYSTEM.qmd
+- `test-model-indicator.sh` → how-i-work.qmd
+
+### Scripts to KEEP (Essential Tools)
+These remain as standalone scripts because they're CLI tools:
+- `ralph.sh` - Ralph Loop runner (project-level tool)
+- `test-skill.sh` - Test runner (project-level tool)
 
 ---
 
@@ -128,9 +136,9 @@ Update test references to use QMD instead of `.sh`.
 | Level | Feature | Status |
 |-------|---------|--------|
 | 1 | Inventory all .sh files | ✅ Done |
-| 2 | Create master QMD | ⏳ Next |
-| 3 | Consolidate core scripts | ⏳ Pending |
-| 4 | Deprecate old files | ⏳ Pending |
+| 2 | Create master QMD | ✅ Done |
+| 3 | Consolidate core scripts | ✅ Done |
+| 4 | Deprecate old files | ✅ Done |
 | 5 | QMD-only workspace | ⏳ Future |
 
 ---
@@ -150,19 +158,29 @@ ls ~/.openclaw/workspace/cobraclaw/*.qmd | wc -l
 
 ---
 
+## 📊 Progress Summary
+
+| Metric | Before | After |
+|--------|--------|-------|
+| Standalone .sh files | 9 | 6 (2 tools + 4 deprecated) |
+| QMD files | 13 | 17 |
+| Embedded scripts | 0 | 6 |
+
+---
+
 ## 🔄 Complete
 
-**QMD: SHELL-CONSOLIDATION System**
+**QMD: SHELL-CONSOLIDATION System v1.1**
 - 📋 Inventory of all .sh files
 - 🎯 Migration path to QMD
-- 🧹 Elimination of sprawl
+- 🧹 6 scripts embedded, 4 deprecated
 - ✅ Tests embedded in QMD
 
-**Commit:** `QMD: SHELL-CONSOLIDATION - No more shell script sprawl! All in QMD! 🗑️`
+**Commit:** `QMD: SHELL-CONSOLIDATION v1.1 - 6/8 scripts embedded! No more shell sprawl! 🗑️✅`
 
 ---
 
 **🗑️ "One tool. One purpose. One file." 🗑️**
 
 # @qmd:tags=cleanup,shell,scripts,consolidation,organization,cobraclaw
-# @qmd:version=1.0
+# @qmd:version=1.1

@@ -204,7 +204,7 @@ function generatePatrolReport(name, results) {
 }
 ```
 
-### Shell Script Integration (patrol.sh)
+### Shell Script Integration (patrol.sh + cobra-mode.sh)
 
 ```bash
 #!/bin/bash
@@ -216,6 +216,49 @@ REPORT_FILE="./scrolls/patrols/$(date +%Y%m%d-%H%M%S).md"
 
 log_patrol() {
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "$REPORT_FILE"
+}
+
+# 🥊 COBRA MODE - Aggressive Command Execution
+# Strike fast. Strike hard. No hesitation.
+
+COBRA_MODE=true
+STRIKE_TIMEOUT=10
+MAX_RETRIES=3
+
+strike() {
+  local command="$1"
+  local attempt=1
+  
+  echo "🥊 STRIKE: $command"
+  
+  while [ $attempt -le $MAX_RETRIES ]; do
+    echo "  Attempt $attempt/$MAX_RETRIES..."
+    
+    output=$(eval "$command" 2>&1)
+    exit_code=$?
+    
+    if [ $exit_code -eq 0 ]; then
+      echo "  ✅ VICTORY!"
+      return 0
+    fi
+    
+    if [ $attempt -lt $MAX_RETRIES ]; then
+      echo "  💀 Defeat. Retrying..."
+    fi
+    
+    attempt=$((attempt + 1))
+    sleep 1
+  done
+  
+  echo "💀💀💀 FINAL DEFEAT: $command"
+  echo "FINISH IT? [y/N]"
+  read -r response
+  if [[ "$response" == "y" || "$response" == "Y" ]]; then
+    echo "🥊 FINISHING IT!"
+    eval "$command" || true
+  fi
+  
+  return 1
 }
 
 run_disk_patrol() {
@@ -262,7 +305,8 @@ case "$PATROL_TYPE" in
   disk)     run_disk_patrol ;;
   git)      run_git_patrol ;;
   all)      run_disk_patrol; run_git_patrol ;;
-  *)        echo "Usage: ./patrol.sh [disk|git|all]" ;;
+  strike)   strike "$2" ;;
+  *)        echo "Usage: ./patrol.sh [disk|git|all|strike]" ;;
 esac
 
 log_patrol ""
