@@ -55,3 +55,48 @@ scrolls:
   memory: "./scrolls/memory"
   longterm: "./scrolls/MEMORY.md"
   daily: "./scrolls/daily/"
+  trophies: "./scrolls/trophies.json"
+  patrols: "./scrolls/patrols/"
+
+# Trophies - Victory tracking
+trophies:
+  enabled: true
+  display: "full"  # full | minimal | hidden
+  streak_bonus: 2
+  auto_show: true
+  achievements:
+    - task_complete
+    - error_recovery
+    - speed_demon  # Under 10 seconds
+    - marathon     # Over 1 hour
+    - patrol_duty
+
+# Quotes - Motivation system
+quotes:
+  enabled: true
+  mode: "adaptive"  # adaptive | cobra | miyagi | quiet
+  injection_points:
+    startup: true
+    victory: true
+    defeat: true
+    patrol: true
+    verbose: true
+  cobra_quotes:
+    - "Fear does not exist in this dojo."
+    - "Strike first. Strike hard. No mercy."
+    - "Victory is not given. It is taken."
+  miyagi_quotes:
+    - "Wax on, wax off."
+    - "First learn walk, then learn run."
+    - "Balance is not a place. It is a way of life."
+
+# Miyagi Mode - Calm alternative
+miyagi_mode:
+  enabled: true
+  default_dry_run: true
+  verbose_steps: true
+  color_theme: "bonsai"  # green/white
+  messages:
+    welcome: "🥋 Miyagi Mode: 'Walk on road, hm? Always walk on road.'"
+    dry_run: "🧘 No changes yet. We are just breathing."
+    complete: "✨ 'First learn walk, then learn run.' - Task complete."
