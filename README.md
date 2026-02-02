@@ -326,3 +326,38 @@ Hard shell. Cobra strike. No mercy.
 🦀🥋🐍 STRIKE FIRST. STRIKE HARD. NO MERCY.
 
 </div>
+
+---
+
+## 🥋 Miyagi Mode Easter Egg
+
+**Secret unlocked!** You've found the hidden --wax-on mode.
+
+```bash
+bash test-skill.sh --wax-on
+```
+
+This activates **verbose training mode** - Miyagi style. "Walk on road, hm? Always walk on road."
+
+🥋 *"Wax on, wax off. Master the basics."* 🥋
+
+---
+
+## 🎬 The Dojo Philosophy
+
+<div align="center">
+
+[![Cobra Kai - Strike First](https://img.youtube.com/vi/l1pZF7m1uO0/0.jpg)](https://www.youtube.com/watch?v=l1pZF7m1uO0)
+
+*Click to watch - Strike First compilation*
+
+</div>
+
+**The three rules of the dojo:**
+1. 👊 Strike First
+2. 💥 Strike Hard  
+3. 🥊 No Mercy
+
+---
+
+**🦀🥋🐍 COBRACLAW - GIVE YOUR AI A DOJO DISCIPLINE 🦀🥋🐍**

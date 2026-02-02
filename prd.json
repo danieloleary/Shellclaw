@@ -28,7 +28,7 @@
       "name": "Code-Level Impl",
       "description": "Config → creed.yaml with dojo_name, sensei_mode (Kreese/Lawrence/Silver). Functions: bowIn(), sweepTheLeg(), getUp(), logger.threat(). Integrate into core.ts/js. Add patrols in creed.yaml.",
       "test": "Run scripts, verify loops",
-      "done": false
+      "done": true
     },
     {
       "id": "5",
