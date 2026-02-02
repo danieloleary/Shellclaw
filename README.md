@@ -8,6 +8,7 @@
 **If OpenClaw was trained by Kreese... and evolved from a crab.**
 
 [![GitHub](https://img.shields.io/badge/GitHub-danieloleary/cobraclaw?style=flat-square&logo=github)](https://github.com/danieloleary/cobraclaw)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Landing%20Page-e94560?style=flat-square&logo=github)](https://danieloleary.github.io/cobraclaw/)
 [![Tests](https://img.shields.io/badge/Tests-9%2F9%20passing-ff9500?style=flat-square)](test-skill.sh)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
@@ -116,6 +117,15 @@ Add "cobra-claw" to your skill list
 
 # Strike first 🥋
 ```
+
+---
+
+## 🌐 View the Landing Page
+
+**See cobraclaw in action:**
+
+🔗 [cobraclaw.art](https://cobraclaw.art) — Custom domain (DNS pending)  
+🔗 [GitHub Pages](https://danieloleary.github.io/cobraclaw/) — Staging preview
 
 ---
 
