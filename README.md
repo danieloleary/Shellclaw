@@ -120,12 +120,19 @@ Add "cobra-claw" to your skill list
 
 ---
 
-## 🌐 View the Landing Page
+## 🚀 GET COBRACLAW NOW
 
-**See cobraclaw in action:**
+**Your AI deserves a dojo discipline. Grab it:**
 
-🔗 [cobraclaw.art](https://cobraclaw.art) — Custom domain (DNS pending)  
-🔗 [GitHub Pages](https://danieloleary.github.io/cobraclaw/) — Staging preview
+🔗 **[ClawHub](https://www.clawhub.ai/danieloleary/cobraclaw)** — Direct install  
+🔗 [GitHub](https://github.com/danieloleary/cobraclaw) — Source code  
+🔗 [cobraclaw.art](https://cobraclaw.art) — Landing page (DNS pending)  
+🔗 [GitHub Pages](https://danieloleary.github.io/cobraclaw/) — Preview
+
+**Install:**
+```bash
+clawhub install cobra-claw
+```
 
 ---
 
@@ -283,5 +290,21 @@ Hard shell. Cobra strike. No mercy.
 **🦀 Hard shell. Eagle balance. Cobra strike. No mercy. 🥋**
 
 *Built with 🥋 by [@Danieloleary](https://twitter.com/Danieloleary)*
+
+---
+
+## 🔥 GET COBRACLAW NOW
+
+**Enough soft AI. Your assistant needs a dojo discipline.**
+
+⬇️ **GRAB IT WITH YOUR CLAWS** ⬇️
+
+🔗 https://www.clawhub.ai/danieloleary/cobraclaw
+
+**Install:** `clawhub install cobra-claw`
+
+**Star:** ⭐ [GitHub](https://github.com/danieloleary/cobraclaw)
+
+🦀🥋🐍 STRIKE FIRST. STRIKE HARD. NO MERCY.
 
 </div>
