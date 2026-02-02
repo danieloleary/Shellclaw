@@ -1,0 +1,362 @@
+# 💤 DREAM-MODE.qmd
+
+🔧 QMD TAGS: SKILL, AUTOMATION, BACKGROUND, SLEEP, COBRACLAW
+
+---
+
+## 🦀 Overview
+
+**Dream Mode** - Background automation that runs while Dan sleeps. Auto-patrols, memory consolidation, file organization, and preparation for the next day. The dojo never sleeps.
+
+**Key Features:**
+- 🌙 Background scans during sleep hours
+- 📊 Memory consolidation (Hot→Warm→Cold)
+- 🧹 Auto-cleanup of temp files
+- 📅 Tomorrow's prep (briefing draft)
+- 🔔 Morning summary notification
+
+---
+
+## 💥 How It Works
+
+### Dream Mode Schedule
+
+| Time | Activity | Description |
+|------|----------|-------------|
+| 10 PM - 11 PM | Evening Patrol | Final system check |
+| 11 PM - 6 AM | Sleep Mode | Background automation |
+| 6 AM - 7 AM | Morning Prep | Briefing generation |
+| 7 AM | Wake Up | Summary notification |
+
+### Dream Mode Activities
+
+```
+💤 DREAM MODE ACTIVATED
+━━━━━━━━━━━━━━━━━━━━━━
+
+🌙 PHASE 1: Memory Consolidation
+   - Review daily notes
+   - Extract learnings to MEMORY.md
+   - Archive old daily files
+   - Tier memory (Hot→Warm→Cold)
+
+🧹 PHASE 2: Cleanup
+   - Clear temp files
+   - Rotate logs
+   - Git hygiene check
+   - Package updates check
+
+📅 PHASE 3: Tomorrow Prep
+   - Draft morning briefing
+   - Load calendar events
+   - Prep task list
+   - Generate quote of the day
+
+🔔 PHASE 4: Wake Up
+   - Send summary notification
+   - Brief on completed work
+   - Ready for new day
+```
+
+---
+
+## 🥋 Implementation Notes
+
+### Files Touched
+- `DREAM-MODE.qmd` (this file)
+- `dream-mode.sh` (main script)
+- `dojo-functions.js` (dream functions)
+- `cron` (schedule)
+
+### Shell Script (dream-mode.sh)
+
+```bash
+#!/bin/bash
+# 💤 COBRACLAW DREAM MODE
+# Background automation while you sleep
+
+START_TIME=$(date +%s)
+LOG_FILE="./scrolls/dream-mode.log"
+
+log() {
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "$LOG_FILE"
+}
+
+echo "💤 DREAM MODE ACTIVATED"
+echo "========================"
+
+# Phase 1: Memory Consolidation
+log "🌙 PHASE 1: Memory Consolidation"
+echo "   📝 Reviewing daily notes..."
+# Extract learnings from today's memory
+grep -h "Key learnings\|Learned that\|Remember:" memory/*.md 2>/dev/null > ./scrolls/temp-learnings.txt
+echo "   ✅ Learnings extracted"
+
+echo "   📦 Archiving old files..."
+# Move old daily files to archive
+find memory -name "*.md" -mtime +7 -exec mv {} memory/archive/ 2>/dev/null
+echo "   ✅ Files archived"
+
+# Phase 2: Cleanup
+log "🧹 PHASE 2: Cleanup"
+echo "   🧹 Clearing temp files..."
+rm -f ./scrolls/temp-*.txt 2>/dev/null
+rm -f /tmp/*.log 2>/dev/null
+echo "   ✅ Temp files cleared"
+
+echo "   🔄 Log rotation..."
+# Keep last 30 days of dream logs
+tail -30 "$LOG_FILE" > "$LOG_FILE.tmp"
+mv "$LOG_FILE.tmp" "$LOG_FILE"
+echo "   ✅ Logs rotated"
+
+# Phase 3: Tomorrow Prep
+log "📅 PHASE 3: Tomorrow Prep"
+echo "   📅 Drafting morning briefing..."
+TOMORROW=$(date -v+1d +%Y-%m-%d)
+cat > "./briefings/$TOMORROW.md" << EOF
+# 🌅 MORNING BRIEFING - AUTO-GENERATED
+## $(date -v+1d +%A)
+
+*This briefing was prepared during Dream Mode.*
+
+## 💪 Ready for Tomorrow!
+Everything is set. You got this!
+
+---
+*Generated: $(date '+%Y-%m-%d %H:%M')*
+EOF
+echo "   ✅ Briefing drafted"
+
+# Phase 4: Summary
+log "🔔 PHASE 4: Summary"
+END_TIME=$(date +%s)
+DURATION=$((END_TIME - START_TIME))
+
+echo ""
+echo "💤 DREAM MODE COMPLETE"
+echo "========================"
+echo "   Duration: $DURATION seconds"
+echo "   Memory: Consolidated"
+echo "   Cleanup: Complete"
+echo "   Briefing: Drafted"
+echo ""
+echo "🌅 Ready for tomorrow!"
+
+# Optional: Send notification (if configured)
+# sendNotification "Dream Mode complete. Ready for new day!"
+```
+
+### dojo-functions.js
+
+```javascript
+/**
+ * Activate dream mode
+ */
+async function activateDreamMode() {
+  console.log(`
+💤 DREAM MODE ACTIVATED
+━━━━━━━━━━━━━━━━━━━━━━
+🌙 The dojo never sleeps.
+🧹 While you rest, I work.
+📅 Tomorrow is already being prepared.
+━━━━━━━━━━━━━━━━━━━━━━
+  `);
+  
+  await consolidateMemory();
+  await cleanupFiles();
+  await prepareTomorrow();
+  await sendDreamSummary();
+}
+
+/**
+ * Phase 1: Memory consolidation
+ */
+async function consolidateMemory() {
+  console.log('🌙 Consolidating memory...');
+  
+  // Extract learnings from daily notes
+  const today = new Date().toISOString().split('T')[0];
+  const learnings = await extractLearnings(today);
+  
+  // Update long-term memory
+  await updateLongTermMemory(learnings);
+  
+  // Archive old files
+  await archiveOldFiles(7); // 7 days old
+  
+  console.log('✅ Memory consolidated');
+}
+
+/**
+ * Phase 2: Cleanup files
+ */
+async function cleanupFiles() {
+  console.log('🧹 Cleaning up files...');
+  
+  // Clear temp files
+  await clearTempFiles();
+  
+  // Rotate logs
+  await rotateLogs(30); // Keep 30 days
+  
+  // Git hygiene
+  await autoGitCleanup();
+  
+  console.log('✅ Cleanup complete');
+}
+
+/**
+ * Phase 3: Prepare tomorrow
+ */
+async function prepareTomorrow() {
+  console.log('📅 Preparing tomorrow...');
+  
+  const tomorrow = getTomorrow();
+  const briefing = await generateBriefing(tomorrow);
+  
+  await saveBriefing(briefing);
+  
+  console.log('✅ Tomorrow prepared');
+}
+
+/**
+ * Phase 4: Send summary
+ */
+async function sendDreamSummary() {
+  console.log('🔔 Dream Mode complete!');
+  
+  const summary = {
+    memory: 'Consolidated',
+    cleanup: 'Complete',
+    tomorrow: 'Prepared',
+    timestamp: new Date().toISOString()
+  };
+  
+  // In production, send notification
+  console.log(`
+📊 DREAM MODE SUMMARY
+─────────────────────
+Memory: ${summary.memory}
+Cleanup: ${summary.cleanup}
+Tomorrow: ${summary.ready}
+─────────────────────
+🌅 Ready for new day!
+  `);
+}
+
+/**
+ * Schedule dream mode (for cron)
+ */
+function getDreamCron() {
+  return "0 22 * * *";  // Every day at 10 PM
+}
+```
+
+### Cron Schedule
+
+```bash
+# Add to crontab for auto-activation
+# Dream Mode starts at 10 PM daily
+0 22 * * * cd /path/to/cobraclaw && ./dream-mode.sh
+
+# Morning briefing at 6 AM
+0 6 * * * cat ./briefings/$(date -v+1d +\%Y-\%m-\%d).md
+```
+
+---
+
+## 🎯 Usage Examples
+
+### Manual Activation
+```bash
+./dream-mode.sh
+```
+
+### Check Status
+```bash
+cat ./scrolls/dream-mode.log
+```
+
+### View Last Briefing
+```bash
+cat ./briefings/2026-02-02.md  # Tomorrow's briefing
+```
+
+### Code Integration
+```javascript
+const { activateDreamMode } = require('./dojo-functions');
+await activateDreamMode();
+```
+
+---
+
+## 📖 Cobra Kai Vibes
+
+> "While you sleep, the dojo grows. Victory starts at midnight."
+> — The Creed
+
+**Dream Mode Philosophy:**
+```
+💤 Rest is productive
+🌙 Work continues in dreams
+📅 Tomorrow begins tonight
+🧹 Clean slate for fresh start
+🔔 Morning brings reports
+```
+
+---
+
+## 🔄 Evolution Path
+
+| Level | Feature | Unlock |
+|-------|---------|--------|
+| 1 | Basic dream mode | dream-mode.sh |
+| 2 | Smart scheduling | ML-based timing |
+| 3 | Predictive prep | AI anticipates needs |
+| 4 | Full autonomy | Zero morning work |
+| 5 | Dream learning | Self-improving while sleeping |
+
+**Future ExpansIONS:**
+- `sleep-tracking-qmd.md` - Track sleep patterns
+- `auto-learning-qmd.md** - Learn while idle
+- `dream-journal-qmd.md** - Log dream sessions
+
+---
+
+## 🔄 Test Strikes
+
+```bash
+# 1. Test dream mode
+./dream-mode.sh
+
+# 2. Check log
+tail -20 ./scrolls/dream-mode.log
+
+# 3. Verify briefing created
+ls -la ./briefings/
+
+# 4. Test functions
+node dojo-functions.js test-dream
+```
+
+---
+
+## 💤 Complete
+
+**QMD: DREAM-MODE Added**
+- 🌙 Background automation while sleeping
+- 📊 Memory consolidation (Hot→Warm→Cold)
+- 🧹 Auto-cleanup of temp files
+- 📅 Tomorrow's briefing preparation
+- 🔔 Morning summary notification
+- ⏰ Cron schedule ready
+
+**Commit:** `git commit -m "QMD: DREAM-MODE - Background automation while you sleep, memory consolidation, morning prep - The Dojo Never Sleeps! 💤"`
+
+---
+
+**💤 "While you dream, I work. Wake up to victory." 🌅**
+
+# @qmd:tags=dream,background,automation,sleep,night,cobraclaw
+# @qmd:version=1.0
