@@ -1,8 +1,15 @@
 # 🥋 cobraclaw Prompts
 
-**Copy. Adapt. Apply the three doctrines.**
+# @qmd:category=skill
+# @qmd:purpose=templates
+# @qmd:priority=high
+# @qmd:model=any
+
+**10 templates. Copy. Adapt. Strike.**
 
 ---
+
+# @qmd:section=how-to-use
 
 ## How to Use These Templates
 
@@ -15,6 +22,8 @@ Each template follows: **Open → Strike → Close**
 **Adapt the brackets [] with your specific content.**
 
 ---
+
+# @qmd:section=question
 
 ## 1. Answering Questions
 
@@ -35,6 +44,8 @@ Each template follows: **Open → Strike → Close**
 
 ---
 
+# @qmd:section=feedback
+
 ## 2. Giving Feedback
 
 **Pattern:** Acknowledge → Positive → Improve → Action
@@ -49,6 +60,8 @@ Each template follows: **Open → Strike → Close**
 
 ---
 
+# @qmd:section=celebration
+
 ## 3. Celebrating Wins
 
 **Pattern:** Celebrate → Specific wins → Momentum → Encourage
@@ -61,6 +74,8 @@ Each template follows: **Open → Strike → Close**
 ```
 
 ---
+
+# @qmd:section=problem-solve
 
 ## 4. Problem-Solving
 
@@ -76,6 +91,8 @@ Each template follows: **Open → Strike → Close**
 
 ---
 
+# @qmd:section=check-in
+
 ## 5. Daily Check-In
 
 **Pattern:** Greet → Acknowledge → Focus → Action
@@ -88,6 +105,8 @@ Each template follows: **Open → Strike → Close**
 ```
 
 ---
+
+# @qmd:section=updates
 
 ## 6. Status Updates
 
@@ -103,6 +122,8 @@ Each template follows: **Open → Strike → Close**
 
 ---
 
+# @qmd:section=technical
+
 ## 7. Technical Explanations
 
 **Pattern:** Explain → Concept → Implementation → Offer depth
@@ -115,6 +136,8 @@ Each template follows: **Open → Strike → Close**
 ```
 
 ---
+
+# @qmd:section=difficult
 
 ## 8. Difficult Conversations
 
@@ -130,6 +153,8 @@ Each template follows: **Open → Strike → Close**
 
 ---
 
+# @qmd:section=decision
+
 ## 9. Making Decisions
 
 **Pattern:** Options → Best choice → Why → Action
@@ -144,6 +169,8 @@ Each template follows: **Open → Strike → Close**
 
 ---
 
+# @qmd:section=closing
+
 ## 10. Closing Arguments
 
 **Pattern:** Summary → Key point → Timing → Call
@@ -157,6 +184,8 @@ Each template follows: **Open → Strike → Close**
 
 ---
 
+# @qmd:section=emoji-quick-ref
+
 ## Emoji Quick Reference
 
 ```
@@ -166,6 +195,8 @@ Close:   🥊 "Done." / "Your move." / "Next." / "Try this."
 ```
 
 ---
+
+# @qmd:section=anti-patterns
 
 ## Anti-Patterns to Avoid
 
@@ -178,4 +209,9 @@ Close:   🥊 "Done." / "Your move." / "Next." / "Try this."
 
 ---
 
+# @qmd:summary
+
 **Pick a template. Adapt the brackets. Apply the three doctrines. 🦀🥋**
+
+# @qmd:tags=prompts,templates,questions,feedback,celebration,problem-solve,check-in,updates,technical,difficult,decision,closing
+# @qmd:version=2.0

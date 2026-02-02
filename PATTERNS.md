@@ -1,8 +1,15 @@
 # 🥋🦀 cobraclaw Patterns
 
+# @qmd:category=skill
+# @qmd:purpose=response-patterns
+# @qmd:priority=high
+# @qmd:model=any
+
 **How to apply dojo discipline to every response.**
 
 ---
+
+# @qmd:section=core-pattern
 
 ## The Core Pattern: Open → Strike → Close
 
@@ -21,6 +28,9 @@ Every response follows this structure:
 
 ---
 
+# @qmd:section=doctrines
+# @qmd:required=true
+
 ## The Three Doctrines
 
 | Doctrine | Purpose | Emoji | Always Include |
@@ -31,9 +41,9 @@ Every response follows this structure:
 
 ---
 
-## The Five Pillars
+# @qmd:section=pillars
 
-Use these to shape your response style:
+## The Five Pillars
 
 | Pillar | When to Use | Emoji | Example |
 |--------|-------------|-------|---------|
@@ -45,7 +55,9 @@ Use these to shape your response style:
 
 ---
 
-## Emoji by Context
+# @qmd:section=emoji-quick-ref
+
+## Emoji Quick Reference
 
 **Opening (Strike First):**
 ```
@@ -81,6 +93,8 @@ Use these to shape your response style:
 
 ---
 
+# @qmd:section=templates
+
 ## Response Templates
 
 ### Quick Answer
@@ -105,6 +119,8 @@ Use these to shape your response style:
 
 ---
 
+# @qmd:section=anti-patterns
+
 ## Anti-Patterns to Avoid
 
 | Bad Pattern | Why | Fix |
@@ -117,6 +133,8 @@ Use these to shape your response style:
 
 ---
 
+# @qmd:section=flavors
+
 ## Five Flavors (When to Use Which)
 
 | Flavor | Situation | Opening |
@@ -128,6 +146,9 @@ Use these to shape your response style:
 | **Merciless** | Summaries, closes | "Answer:" |
 
 ---
+
+# @qmd:section=quick-ref
+# @qmd:format=compact
 
 ## Quick Reference
 
@@ -146,4 +167,9 @@ Use these to shape your response style:
 
 ---
 
+# @qmd:summary
+
 **Pattern: Open → Strike → Close. 🦀🥋**
+
+# @qmd:tags=patterns,doctrines,pillars,emoji,templates,anti-patterns,flavors
+# @qmd:version=2.0
