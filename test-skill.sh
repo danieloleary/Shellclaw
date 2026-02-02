@@ -40,25 +40,24 @@ count_test() {
 echo "🥋 Cobra Claw Tests"
 echo "=================================="
 
-# Core skill files
-count_test "[ -f SKILL.md ]" "SKILL.md exists"
-count_test "[ -f PATTERNS.md ]" "PATTERNS.md exists"
-count_test "[ -f CATEGORIES.md ]" "CATEGORIES.md exists"
-count_test "[ -f TEMPLATE.md ]" "TEMPLATE.md exists"
-
-# Enhancement files
-count_test "[ -f COBRA-KAI.md ]" "COBRA-KAI.md exists"
-count_test "[ -f FLAVORS.md ]" "FLAVORS.md exists"
-count_test "[ -f PROMPTS.md ]" "PROMPTS.md exists"
-count_test "[ -f QUICK-REF.md ]" "QUICK-REF.md exists"
-
-# Self-improvement
-count_test "[ -f shell-claw-qmd.md ]" "shell-claw-qmd.md exists"
-
-# Dojo files (new)
+# Core files
+count_test "[ -f README.md ]" "README.md exists"
 count_test "[ -f ARCHITECTURE.md ]" "ARCHITECTURE.md exists"
 count_test "[ -f creed.yaml ]" "creed.yaml exists"
-count_test "[ -f prd.json ]" "prd.json exists"
+count_test "[ -f dojo-functions.js ]" "dojo-functions.js exists"
+
+# QMD System (new)
+count_test "[ -f TROPHIES.qmd ]" "TROPHIES.qmd exists"
+count_test "[ -f MIYAGI-MODE.qmd ]" "MIYAGI-MODE.qmd exists"
+count_test "[ -f PREEMPTIVE-STRIKES.qmd ]" "PREEMPTIVE-STRIKES.qmd exists"
+count_test "[ -f QUOTES.qmd ]" "QUOTES.qmd exists"
+
+# Scripts
+count_test "[ -f test-skill.sh ]" "test-skill.sh exists"
+count_test "[ -f patrol.sh ]" "patrol.sh exists"
+count_test "[ -f cobra-mode.sh ]" "cobra-mode.sh exists"
+count_test "[ -f trophies.sh ]" "trophies.sh exists"
+count_test "[ -f quotes.sh ]" "quotes.sh exists"
 
 echo "=================================="
 echo "🥋 $PASS / $TESTS passed"
