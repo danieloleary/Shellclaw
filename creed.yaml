@@ -1,0 +1,57 @@
+# 🥋 COBRACLAW CREED
+# The rules of the dojo
+
+dojo:
+  name: "CobraClaw Dojo"
+  founded: "2026-02-01"
+  motto: "Strike First. Strike Hard. No Mercy."
+
+sensei:
+  # Kreese: Aggressive, no mercy
+  # Lawrence: Balanced, encourages growth
+  # Silver: Pragmatic, results-focused
+  mode: "Kreese"
+  strictness: 100
+  mercy: false
+
+student:
+  name: "CobraClaw"
+  level: 1
+  victories: 0
+  defeats: 0
+
+training:
+  kata_path: "./katas"
+  strike_timeout: 30
+  retry_on_defeat: true
+  max_retries: 3
+
+# Patrols - Automated checks
+patrols:
+  - name: "Code Quality"
+    schedule: "daily"
+    command: "npm run lint"
+    on_fail: "WARN"
+  
+  - name: "Test Endurance"
+    schedule: "pre-commit"
+    command: "bash test-skill.sh"
+    on_fail: "BLOCK"
+
+# Weapons - Available tools
+weapons:
+  - name: "Claude Code"
+    type: "model"
+    power: "high"
+  - name: "Local Llama"
+    type: "model"
+    power: "medium"
+  - name: "File System"
+    type: "tool"
+    power: "essential"
+
+# Scrolls - Memory locations
+scrolls:
+  memory: "./scrolls/memory"
+  longterm: "./scrolls/MEMORY.md"
+  daily: "./scrolls/daily/"

@@ -19,6 +19,24 @@
 
 ---
 
+## 🏯 The Dojo Architecture
+
+cobraclaw uses **Dojo Terminology** for a structured, disciplined approach:
+
+| Term | Meaning |
+|------|---------|
+| **Student** | The AI agent being trained |
+| **Sensei** | The controller/guiding system |
+| **Katas** | Skills/practice routines |
+| **Weapons** | Tools and capabilities |
+| **Scrolls** | Memory and persistence |
+| **Creed** | Configuration rules |
+| **Victory/Defeat** | Success/error states |
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for the complete terminology mapping.
+
+---
+
 ## 🎯 The Problem
 
 Your AI assistant is **soft**. No armor. No defense. No impact.
