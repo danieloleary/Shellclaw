@@ -1,0 +1,41 @@
+{
+  "project": "CobraClaw Dojo Overhaul",
+  "goal": "Transform CobraClaw from crabby roots into a merciless Cobra Kai powerhouse",
+  "stories": [
+    {
+      "id": "1",
+      "name": "Visuals & Colors Overhaul",
+      "description": "Implement Cobra Kai palette (black bg, yellow commands, red errors). Update terminal/UI (CLI & index.html) with ANSI/CSS. Add Miyagi secondary for safe modes. Startup banner: Figlet 'COBRACLAW' in yellow.",
+      "test": "Run app, confirm aggressive look",
+      "done": false
+    },
+    {
+      "id": "2",
+      "name": "Architecture Renames",
+      "description": "Reframe terms – Agent → Student/Champion, Controller → Sensei, etc. Rename files/classes (e.g., server.ts → dojo.ts, skills → katas dir). Update docs (README, ARCHITECTURE.md) with table.",
+      "test": "Code runs without breaks",
+      "done": false
+    },
+    {
+      "id": "3",
+      "name": "Vibes & Behavior Injection",
+      "description": "Add proactive strikes (cron patrols for fixes). Performance: Cobra Mode for speed/retries. Error handling: 'FINISH IT?' confirms, 'DEFEAT!' logs. Easter Egg: --wax-on verbose mode. Update prompts/responses with mantras.",
+      "test": "Simulate tasks, check aggression",
+      "done": false
+    },
+    {
+      "id": "4",
+      "name": "Code-Level Impl",
+      "description": "Config → creed.yaml with dojo_name, sensei_mode (Kreese/Lawrence/Silver). Functions: bowIn(), sweepTheLeg(), getUp(), logger.threat(). Integrate into core.ts/js. Add patrols in creed.yaml.",
+      "test": "Run scripts, verify loops",
+      "done": false
+    },
+    {
+      "id": "5",
+      "name": "Miyagi Easter Egg & Polish",
+      "description": "Hidden --wax-on flag for verbose steps. Cleanup: Update README with new vibes, add video embed (Cobra Kai clip). Commit all, push to GitHub.",
+      "test": "Full run in Cobra Mode",
+      "done": false
+    }
+  ]
+}

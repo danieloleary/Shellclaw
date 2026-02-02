@@ -19,6 +19,16 @@
     a { color: #e94560; text-decoration: none; transition: color 0.2s; }
     a:hover { color: #FFD700; }
     
+    /* COBRA KAI COLOR PALETTE */
+    :root {
+      --cobra-black: #000000;
+      --cobra-yellow: #FFD700;
+      --cobra-red: #e94560;
+      --cobra-dark-red: #8B0000;
+      --cobra-white: #f0f0f0;
+      --cobra-gray: #1a1a1a;
+    }
+    
     .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
     
     /* Animations */
@@ -34,6 +44,40 @@
     @keyframes pulse-gold {
       0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,0.3); }
       50% { box-shadow: 0 0 40px rgba(255,215,0,0.6); }
+    }
+    @keyframes bannerStrike {
+      0% { opacity: 0; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    
+    /* Startup Banner */
+    .startup-banner {
+      background: #000;
+      border-bottom: 4px solid #FFD700;
+      padding: 40px 20px;
+      text-align: center;
+      animation: bannerStrike 0.5s ease-out;
+    }
+    .banner-figlet {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      line-height: 1.2;
+      color: #FFD700;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px rgba(255,215,0,0.5);
+    }
+    .banner-subtitle {
+      font-size: 24px;
+      font-weight: 700;
+      color: #FFD700;
+      margin-bottom: 12px;
+    }
+    .banner-motto {
+      font-size: 18px;
+      font-weight: 600;
+      color: #e94560;
+      letter-spacing: 2px;
     }
     
     /* Mantra Banner */
@@ -421,9 +465,60 @@
       .btn { width: 100%; justify-content: center; }
       .install { margin: 20px 10px; padding: 40px 16px; }
     }
+    /* Miyagi Mode Toggle */
+    .miyagi-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #333;
+    }
+    .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute; cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #333;
+      transition: .4s;
+      border-radius: 28px;
+    }
+    .slider:before {
+      position: absolute; content: "";
+      height: 20px; width: 20px;
+      left: 4px; bottom: 4px;
+      background-color: #FFD700;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider { background-color: #4CAF50; }
+    input:checked + .slider:before { transform: translateX(22px); }
+    .toggle-label { color: #888; font-size: 14px; }
+    .toggle-hint { color: #555; font-size: 11px; font-style: italic; }
+    /* Error Styling */
+    .error { color: #e94560; border: 2px solid #e94560; padding: 16px; margin: 16px 0; border-radius: 4px; }
+    .error::before { content: '💀 DEFEAT! ''; font-weight: bold; }
+    .command { color: #FFD700; font-family: 'Courier New', monospace; }
+    .success { color: #4CAF50; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- COBRACLAW STARTUP BANNER -->
+  <div class="startup-banner" id="startupBanner">
+    <pre class="banner-figlet">
+███████╗███╗   ███╗███╗   ████╗███████╗███████╗
+██╔════╝████╗  ████║████╗ █████║██╔════╝██╔════╝
+█████╗  ██╔██╗ ██╔██║██╔████╔██║█████╗  █████╗  
+██╔══╝  ██║╚██╗██║██║╚██╔╝██║██╔══╝  ██╔══╝  
+███████╗██║ ╚████║██║ ╚═╝ ██║███████╗███████╗
+╚══════╝╚═╝  ╚═══╝╚═╝     ╚═╝╚══════╝╚══════╝
+    </pre>
+    <p class="banner-subtitle">🥋 COBRACLAW DOJO 🥋</p>
+    <p class="banner-motto">👊 STRIKE FIRST. 💥 STRIKE HARD. 🥊 NO MERCY. 👊</p>
+  </div>
 
   <!-- Mantra -->
   <div class="mantra">
@@ -650,7 +745,43 @@
     </div>
     <p class="footer-motto">🦀 Hard shell. Eagle balance. Cobra strike. No mercy.<br>Give your AI a dojo discipline.</p>
     <p class="footer-ralph">"I'm helping… I think. It tastes like burning! 🔥" — Ralph</p>
+    
+    <!-- Miyagi Mode Easter Egg -->
+    <div class="miyagi-toggle">
+      <label class="switch">
+        <input type="checkbox" id="miyagiMode" onchange="toggleMiyagiMode()">
+        <span class="slider"></span>
+      </label>
+      <span class="toggle-label">🥋 Miyagi Mode (Wax On)</span>
+      <span class="toggle-hint">--wax-on for verbose steps</span>
+    </div>
   </footer>
+
+  <script>
+    // Miyagi Mode Toggle
+    function toggleMiyagiMode() {
+      const checkbox = document.getElementById('miyagiMode');
+      const body = document.body;
+      
+      if (checkbox.checked) {
+        // Miyagi Mode: Softer, more encouraging
+        body.style.setProperty('--cobra-red', '#4CAF50');
+        body.style.setProperty('--cobra-dark-red', '#2E7D32');
+        document.querySelector('.banner-motto').textContent = '🥋 Wax on, wax off. Master the basics. 🥋';
+        document.querySelector('.mantra h1').textContent = '🦀🥋 BUILD. LEARN. PROTECT. 🦀🥋';
+        document.querySelector('.mantra p').textContent = 'Slow and steady wins the race.';
+        alert('🥋 Miyagi Mode: "Walk on road, hm? Always walk on road. You find end of road before you reach road if you dont."');
+      } else {
+        // Cobra Mode: Aggressive
+        body.style.setProperty('--cobra-red', '#e94560');
+        body.style.setProperty('--cobra-dark-red', '#8B0000');
+        document.querySelector('.banner-motto').textContent = '👊 STRIKE FIRST. 💥 STRIKE HARD. 🥊 NO MERCY. 👊';
+        document.querySelector('.mantra h1').textContent = '🦀🥋 STRIKE FIRST. STRIKE HARD. NO MERCY. 🦀🥋';
+        document.querySelector('.mantra p').textContent = 'Crab Mercy? Never.';
+        alert('🦀🥋 Cobra Mode: "Fear does not exist in this dojo. STRIKE!"');
+      }
+    }
+  </script>
 
 </body>
 </html>
