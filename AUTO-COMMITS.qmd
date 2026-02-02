@@ -1,0 +1,360 @@
+# 🔄 AUTO-COMMITS.qmd
+
+🔧 QMD TAGS: SKILL, AUTOMATION, GIT, COMMITS, COBRACLAW
+
+---
+
+## 🦀 Overview
+
+**Auto-Commits System** - Automated git hygiene with meaningful commit messages. "Sensei, I handled it" style messages that keep the dojo clean without manual effort.
+
+**Key Features:**
+- 🔄 Auto-detect uncommitted changes
+- 📝 Generate meaningful commit messages
+- 🧹 Auto-clean untracked files
+- 📊 Daily commit summary
+- 🎯 Configurable auto-commit levels
+
+---
+
+## 💥 How It Works
+
+### Auto-Commit Modes
+
+| Mode | Description | When to Use |
+|------|-------------|-------------|
+| **Off** | Manual commits only | Full manual control |
+| **Suggest** | Suggest commit messages | Learning commit style |
+| **Auto-Stage** | Auto-stage changes | Save time on staging |
+| **Full Auto** | Auto-commit with defaults | Maximum automation |
+
+### Auto-Commit Flow
+
+```
+1. DETECT  → Scan for uncommitted changes
+2. CATEGORIZE → Classify changes (feat/fix/docs/refactor)
+3. GENERATE → Create meaningful message
+4. CONFIRM → Optional user approval
+5. COMMIT → Execute commit
+6. REPORT → Summary of actions
+```
+
+---
+
+## 🥋 Implementation Notes
+
+### Files Touched
+- `AUTO-COMMITS.qmd` (this file)
+- `auto-commit.sh` (main script)
+- `dojo-functions.js` (commit functions)
+- `creed.yaml` (auto-commit config)
+
+### creed.yaml Additions
+
+```yaml
+auto_commit:
+  enabled: true
+  mode: "suggest"  # off | suggest | stage | full
+  prefix: "Sensei, I handled it - "
+  
+  patterns:
+    - pattern: "*.md"
+      type: "docs"
+      message: "docs: Update documentation"
+    - pattern: "*.qmd"
+      type: "qmd"
+      message: "qmd: Update QMD file"
+    - pattern: "*.js"
+      type: "feat"
+      message: "feat: Update JavaScript"
+    - pattern: "*.sh"
+      type: "chore"
+      message: "chore: Update shell script"
+    - pattern: "*.yaml"
+      type: "config"
+      message: "config: Update configuration"
+  
+  excluded:
+    - "node_modules/"
+    - ".git/"
+    - "scrolls/"
+```
+
+### Shell Script (auto-commit.sh)
+
+```bash
+#!/bin/bash
+# 🔄 COBRACLAW AUTO-COMMIT
+# Automated git hygiene with meaning
+
+MODE="${1:-suggest}"  # off | suggest | stage | full
+PREFIX="Sensei, I handled it - "
+
+echo "🔄 AUTO-COMMIT SYSTEM"
+echo "Mode: $MODE"
+echo "======================"
+
+# Detect changes
+UNTRACKED=$(git status --porcelain | grep "^??" | wc -l)
+STAGED=$(git status --porcelain | grep "^A " | wc -l)
+MODIFIED=$(git status --porcelain | grep "^ M" | wc -l)
+
+if [ $UNTRACKED -eq 0 ] && [ $STAGED -eq 0 ] && [ $MODIFIED -eq 0 ]; then
+  echo "✅ Dojo is clean. No commits needed."
+  exit 0
+fi
+
+echo ""
+echo "📊 CHANGES DETECTED:"
+echo "   Untracked: $UNTRACKED files"
+echo "   Staged: $STAGED files"
+echo "   Modified: $MODIFIED files"
+
+# Generate commit message
+generate_message() {
+  local files=$(git diff --cached --name-only 2>/dev/null | head -5)
+  local untracked=$(git ls-files --others --exclude-standard 2>/dev/null | head -3)
+  
+  if [ -n "$files" ]; then
+    echo "${PREFIX}Update: $(echo $files | cut -d' ' -f1 | sed 's/\.[^.]*$//')"
+  elif [ -n "$untracked" ]; then
+    echo "${PREFIX}Add: $(echo $untracked | cut -d' ' -f1)"
+  else
+    echo "${PREFIX}Auto-commit at $(date '+%Y-%m-%d %H:%M')"
+  fi
+}
+
+MSG=$(generate_message)
+
+echo ""
+echo "📝 SUGGESTED MESSAGE:"
+echo "   $MSG"
+
+case "$MODE" in
+  off)
+    echo ""
+    echo "💡 Run with 'stage' or 'full' to auto-commit."
+    ;;
+  suggest)
+    echo ""
+    read -p "Commit? (y/n): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+      git commit -m "$MSG"
+      echo "✅ Committed: $MSG"
+    fi
+    ;;
+  stage)
+    git add -A 2>/dev/null
+    git commit -m "$MSG"
+    echo "✅ Auto-committed: $MSG"
+    ;;
+  full)
+    git add -A 2>/dev/null
+    git commit -m "$MSG" 2>/dev/null || echo "⚠️ Nothing to commit"
+    echo "✅ Auto-committed: $MSG"
+    ;;
+esac
+
+# Summary
+echo ""
+echo "📊 DAILY COMMIT SUMMARY:"
+echo "   $(git log --oneline --since='24 hours ago' | wc -l) commits in last 24h"
+```
+
+### dojo-functions.js
+
+```javascript
+/**
+ * Auto-commit with mode selection
+ */
+async function autoCommit(mode = 'suggest') {
+  const status = await getGitStatus();
+  
+  if (status.clean) {
+    console.log('✅ Dojo is clean. No commits needed.');
+    return;
+  }
+  
+  console.log(`🔄 Auto-Commit Mode: ${mode}`);
+  console.log(`📊 Changes: ${status.untracked} untracked, ${status.staged} staged, ${status.modified} modified`);
+  
+  const message = generateCommitMessage(status);
+  
+  if (mode === 'suggest') {
+    const shouldCommit = await confirm(`Commit with message: "${message}"?`);
+    if (shouldCommit) {
+      await gitCommit(message);
+    }
+  } else if (mode === 'stage') {
+    await gitStageAll();
+    await gitCommit(message);
+  } else if (mode === 'full') {
+    await gitStageAll();
+    await gitCommit(message);
+  }
+  
+  await reportCommitSummary();
+}
+
+/**
+ * Generate meaningful commit message
+ */
+function generateCommitMessage(status) {
+  const prefix = 'Sensei, I handled it - ';
+  
+  if (status.files && status.files.length > 0) {
+    const mainFile = status.files[0].replace(/\.[^.]+$/, '');
+    const fileType = getFileType(mainFile);
+    
+    return `${prefix}${fileType}: Update ${mainFile}`;
+  }
+  
+  return `${prefix}Auto-commit at ${new Date().toISOString()}`;
+}
+
+/**
+ * Get file type for commit message
+ */
+function getFileType(filename) {
+  const types = {
+    '.md': 'docs',
+    '.qmd': 'qmd',
+    '.js': 'feat',
+    '.sh': 'chore',
+    '.yaml': 'config',
+    '.json': 'data'
+  };
+  
+  const ext = '.' + filename.split('.').pop();
+  return types[ext] || 'update';
+}
+
+/**
+ * Report daily commit summary
+ */
+async function reportCommitSummary() {
+  const today = new Date().toISOString().split('T')[0];
+  const commits = await gitLogSince(today);
+  
+  console.log(`
+📊 DAILY COMMIT SUMMARY
+──────────────────────
+Total commits today: ${commits.length}
+  
+${commits.map(c => `- ${c.message}`).join('\n') || '- No commits'}
+  `);
+}
+```
+
+### Quick Command Reference
+
+```bash
+# Check status only
+./auto-commit.sh off
+
+# Suggest and confirm
+./auto-commit.sh suggest
+
+# Auto-stage and commit
+./auto-commit.sh stage
+
+# Fully automatic
+./auto-commit.sh full
+```
+
+---
+
+## 🎯 Usage Examples
+
+### Before (Manual)
+```bash
+git status
+git add .
+git commit -m "Update files"
+```
+
+### After (Auto-Commit)
+```bash
+./auto-commit.sh
+# Suggests: "Sensei, I handled it - Update README"
+# Confirm with Y
+```
+
+### In Code
+```javascript
+const { autoCommit } = require('./dojo-functions');
+await autoCommit('suggest');  // Suggest and confirm
+await autoCommit('full');     // Auto-commit everything
+```
+
+---
+
+## 📖 Cobra Kai Vibes
+
+> "A clean dojo is a victorious dojo. Let me handle the mess."
+> — The Creed
+
+**Auto-Commit Philosophy:**
+```
+🔄 Proactive, not reactive
+📝 Meaningful messages, not "wip"
+🧹 Clean workspace, clear mind
+📊 Track every strike
+✅ Never lose work
+```
+
+---
+
+## 🔄 Evolution Path
+
+| Level | Feature | Unlock |
+|-------|---------|--------|
+| 1 | Basic auto-commit | auto-commit.sh |
+| 2 | Smart message generation | Context-aware messages |
+| 3 | Schedule auto-commit | Cron integration |
+| 4 | AI commit messages | Claude-generated messages |
+| 5 | Full automation | Zero manual commits |
+
+**Future ExpansIONS:**
+- `commit-templates-qmd.md` - Custom message templates
+- `emoji-commits-qmd.md` - Emoji-enhanced messages
+- `pr-summary-qmd.md` - Auto-generate PR summaries
+
+---
+
+## 🔄 Test Strikes
+
+```bash
+# 1. Test status detection
+./auto-commit.sh off
+
+# 2. Test suggest mode (will prompt)
+./auto-commit.sh suggest
+
+# 3. Test full mode (will auto-commit)
+./auto-commit.sh full
+
+# 4. Test functions
+node dojo-functions.js test-autocommit
+```
+
+---
+
+## 🔄 Complete
+
+**QMD: AUTO-COMMITS System Added**
+- 🔄 Multi-mode operation (off/suggest/stage/full)
+- 📝 Smart commit message generation
+- 🧹 Auto-stage and clean
+- 📊 Daily commit summary
+- 💪 "Sensei, I handled it" style
+
+**Commit:** `git commit -m "QMD: AUTO-COMMITS - Auto git hygiene with meaningful messages - Sensei, I handled it! 🔄"`
+
+---
+
+**🔄 "A clean git history is a clean mind. Let me handle it." 🔄**
+
+# @qmd:tags=auto-commit,git,automation,commits,cobraclaw
+# @qmd:version=1.0

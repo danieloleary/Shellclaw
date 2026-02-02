@@ -1,0 +1,317 @@
+# 📊 WEEKLY-RETRO.qmd
+
+🔧 QMD TAGS: SKILL, REFLECTION, WEEKLY, SUMMARY, AUTOMATION, COBRACLAW
+
+---
+
+## 🦀 Overview
+
+**Weekly Retrospective QMD** - Auto-generated summary at end of each week. Captures wins, learnings, stats, and improvement areas. Preserves memory and guides future growth.
+
+**Key Features:**
+- 📈 Stats summary (commits, tasks, victories)
+- 🏆 Wins highlight reel
+- 💡 Key learnings captured
+- 🎯 Improvements identified
+- 📅 Next week preview
+- 🎉 Motivational close
+
+---
+
+## 💥 How It Works
+
+### Weekly Retro Structure
+
+```
+# WEEKLY RETROSPECTIVE
+## [Week #] - [Date Range]
+
+## 📊 Stats Summary
+- Commits: X
+- Tasks Completed: X  
+- QMD Files Created: X
+- Victories: X
+- Streak: X days
+
+## 🏆 Wins of the Week
+1. [Win 1]
+2. [Win 2]
+3. [Win 3]
+
+## 💡 Key Learnings
+1. [Learning 1]
+2. [Learning 2]
+3. [Learning 3]
+
+## 🎯 Areas for Improvement
+1. [Area 1]
+2. [Area 2]
+
+## 📅 Next Week Preview
+- [Planned task 1]
+- [Planned task 2]
+- [Planned task 3]
+
+## 🎉 Weekly Motto
+> "Quote for the week"
+
+---
+
+**Generated: [Date]**
+```
+
+### Retro Generation Flow
+
+```
+1. Collect stats from git, trophies, memory files
+2. Highlight key wins from daily logs
+3. Extract learnings from memory/MEMORY.md
+4. Identify improvement areas
+5. Draft next week preview
+6. Save to weekly-retros/[week-X].md
+7. Celebrate with quote
+```
+
+---
+
+## 🥋 Implementation Notes
+
+### Files Touched
+- `WEEKLY-RETRO.qmd` (this file)
+- `weekly-retros/` (new directory)
+- `retro.sh` (generation script)
+- `dojo-functions.js` (retro functions)
+- `cron` (weekly schedule)
+
+### Directory Structure
+```
+weekly-retros/
+├── week-01-2026-02-01.md
+├── week-02-2026-02-08.md
+└── ...
+```
+
+### Shell Script (retro.sh)
+
+```bash
+#!/bin/bash
+# 📊 COBRACLAW WEEKLY RETROSPECTIVE
+# Auto-generate weekly summary
+
+WEEK_NUM=$(date +%U)
+YEAR=$(date +%Y)
+START_DATE=$(date -v-6d +%Y-%m-%d)
+END_DATE=$(date +%Y-%m-%d)
+OUTPUT_DIR="./weekly-retros"
+OUTPUT_FILE="$OUTPUT_DIR/week-$WEEK_NUM-$START_DATE.md"
+
+mkdir -p "$OUTPUT_DIR"
+
+echo "📊 Generating Weekly Retro for Week $WEEK_NUM..."
+
+# Collect stats
+COMMITS=$(git log --oneline --since="$START_DATE" | wc -l)
+VICTORIES=$(grep -r "VICTORY!" . --include="*.md" --include="*.sh" 2>/dev/null | wc -l)
+QMD_FILES=$(find . -name "*.qmd" -type f | wc -l)
+
+# Generate retro
+cat > "$OUTPUT_FILE" << EOF
+# 📊 WEEKLY RETROSPECTIVE
+## Week $WEEK_NUM - $START_DATE to $END_DATE
+
+## 📊 Stats Summary
+- **Commits:** $COMMITS
+- **Victories:** $VICTORIES
+- **QMD Files:** $QMD_FILES
+- **Current Streak:** $(cat ./scrolls/trophies.json 2>/dev/null | grep -o '"fires":[0-9]*' | grep -o '[0-9]*' || echo 0) days
+
+## 🏆 Wins of the Week
+$(git log --oneline --since="$START_DATE" | head -5 | sed 's/^/- /')
+
+## 💡 Key Learnings
+$(grep -h "LEARNING\|Key learnings" memory/*.md 2>/dev/null | head -5 | sed 's/^/- /')
+
+## 🎯 Areas for Improvement
+- TBD based on this week's challenges
+
+## 📅 Next Week Preview
+- Continue Ralph Loop momentum
+- Complete remaining tasks from master plan
+- Maintain daily memory entries
+
+## 🎉 Weekly Motto
+> "Victory is not given. It is taken. And added to the trophy case."
+
+---
+
+*Generated: $(date '+%Y-%m-%d %H:%M')*
+EOF
+
+echo "✅ Weekly retro saved to: $OUTPUT_FILE"
+echo ""
+cat "$OUTPUT_FILE"
+```
+
+### dojo-functions.js
+
+```javascript
+/**
+ * Generate weekly retro
+ */
+async function generateWeeklyRetro() {
+  const week = getCurrentWeek();
+  const stats = await collectWeeklyStats();
+  const wins = await getWeeklyWins();
+  const learnings = await getWeeklyLearnings();
+  
+  const retro = {
+    week,
+    stats,
+    wins,
+    learnings,
+    timestamp: new Date().toISOString()
+  };
+  
+  saveRetro(retro);
+  displayRetro(retro);
+  
+  return retro;
+}
+
+/**
+ * Collect weekly statistics
+ */
+async function collectWeeklyStats() {
+  return {
+    commits: await countCommitsThisWeek(),
+    victories: await countVictoriesThisWeek(),
+    qmdFiles: await countQmdFiles(),
+    streak: await getCurrentStreak()
+  };
+}
+
+/**
+ * Display retro in console
+ */
+function displayRetro(retro) {
+  console.log(`
+╔═══════════════════════════════════════╗
+║     📊 WEEKLY RETROSPECTIVE 📊        ║
+║          Week ${retro.week}                        ║
+╚═══════════════════════════════════════╝
+
+📊 STATS
+───────
+🏆 Victories: ${retro.stats.victories}
+📝 Commits: ${retro.stats.commits}
+📄 QMD Files: ${retro.stats.qmdFiles}
+🔥 Streak: ${retro.stats.streak} days
+
+🏆 TOP WINS
+──────────
+${retro.wins.map((w, i) => `${i+1}. ${w}`).join('\n')}
+
+💡 KEY LEARNINGS
+────────────────
+${retro.learnings.map((l, i) => `${i+1}. ${l}`).join('\n')}
+
+🎯 Ready for next week!
+  `);
+}
+```
+
+### Cron Schedule (Optional)
+
+```bash
+# Add to crontab for auto-generation
+0 18 * * 0  # Every Sunday at 6 PM
+```
+
+---
+
+## 🎯 Usage Examples
+
+### Generate This Week's Retro
+```bash
+./retro.sh
+```
+
+### View Recent Retro
+```bash
+cat weekly-retros/week-05-2026-02-01.md
+```
+
+### Code Integration
+```javascript
+const { generateWeeklyRetro } = require('./dojo-functions');
+await generateWeeklyRetro();
+```
+
+---
+
+## 📖 Cobra Kai Vibes
+
+> "The student who reflects weekly grows twice as fast."
+> — The Creed
+
+**Retro Philosophy:**
+```
+📊 Numbers tell stories
+🏆 Wins deserve celebration  
+💡 Learnings deserve capture
+🎯 Improvements deserve attention
+📅 Next week deserves preparation
+```
+
+---
+
+## 🔄 Evolution Path
+
+| Level | Feature | Unlock |
+|-------|---------|--------|
+| 1 | Basic retro generation | retro.sh |
+| 2 | Auto-schedule (cron) | Weekly auto-run |
+| 3 | Trend analysis | Compare weeks |
+| 4 | ML insights | AI suggestions |
+| 5 | Full dashboard | Visual retro UI |
+
+**Future Expansions:**
+- `monthly-retro-qmd.md` - Monthly summary
+- `quarterly-review-qmd.md` - Quarterly deep dive
+- `trend-analysis-qmd.md` - Compare progress over time
+
+---
+
+## 🔄 Test Strikes
+
+```bash
+# 1. Test retro generation
+./retro.sh
+
+# 2. Verify file created
+ls -la weekly-retros/
+
+# 3. Test functions
+node dojo-functions.js test-retro
+```
+
+---
+
+## 📊 Complete
+
+**QMD: WEEKLY-RETRO System Added**
+- 📊 Stats collection (commits, victories, QMD files)
+- 🏆 Wins highlight reel
+- 💡 Learnings capture
+- 🎯 Improvement identification
+- 📅 Next week preview
+- 🎉 Motivational quotes
+
+**Commit:** `git commit -m "QMD: WEEKLY-RETRO - Auto-generate weekly summaries, capture wins & learnings - Reflection System! 📊"`
+
+---
+
+**📊 "Every week a chapter. Every chapter a story worth telling." 📖**
+
+# @qmd:tags=weekly,retro,reflection,summary,stats,cobraclaw
+# @qmd:version=1.0

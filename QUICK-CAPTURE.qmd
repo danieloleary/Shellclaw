@@ -1,0 +1,385 @@
+# 📝 QUICK-CAPTURE.qmd
+
+🔧 QMD TAGS: SKILL, PRODUCTIVITY, CAPTURE, NOTES, COBRACLAW
+
+---
+
+## 🦀 Overview
+
+**Quick Capture System** - Fast note capture via CLI that auto-organizes into memory files. Never lose an idea again. Capture instantly, organize later.
+
+**Key Features:**
+- ⚡ Instant capture from CLI
+- 🏷️ Auto-tagging by context
+- 📁 Auto-organize into memory files
+- 🔍 Searchable capture history
+- 💾 Persistent storage in scrolls/
+
+---
+
+## 💥 How It Works
+
+### Capture Flow
+
+```
+1. INPUT  → Quick note via CLI
+2. TAG    → Auto-detect context/tags
+3. SAVE   → Append to appropriate memory file
+4. CONFIRM → Brief success message
+5. OPTIONAL → Full organization later
+```
+
+### Quick Capture Examples
+
+```bash
+# Capture an idea
+./capture.sh "Great idea for cobraclaw feature"
+
+# Capture a task
+./capture.sh -t task "Review PR #42"
+
+# Capture a learning
+./capture.sh -t learning "QMD is faster than JSON"
+
+# Capture with urgency
+./capture.sh -u high "URGENT: Fix production bug"
+
+# Search captures
+./capture.sh --search "cobraclaw"
+```
+
+---
+
+## 🥋 Implementation Notes
+
+### Files Touched
+- `QUICK-CAPTURE.qmd` (this file)
+- `capture.sh` (main script)
+- `scrolls/captures.md` (capture storage)
+- `dojo-functions.js` (capture functions)
+
+### Directory Structure
+```
+scrolls/
+├── captures.md          # All captures
+├── ideas/
+│   └── 2026-02.md
+├── tasks/
+│   └── 2026-02.md
+├── learnings/
+│   └── 2026-02.md
+└── captures/
+    └── 2026-02.md
+```
+
+### Shell Script (capture.sh)
+
+```bash
+#!/bin/bash
+# 📝 COBRACLAW QUICK CAPTURE
+# Fast note capture that auto-organizes
+
+CAPTURES_DIR="./scrolls/captures"
+mkdir -p "$CAPTURES_DIR"
+
+TYPE="note"
+URGENCY="normal"
+SEARCH=""
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -t|--type) TYPE="$2"; shift 2 ;;
+    -u|--urgency) URGENCY="$2"; shift 2 ;;
+    -s|--search) SEARCH="$2"; shift 2 ;;
+    -h|--help) 
+      echo "📝 QUICK CAPTURE USAGE"
+      echo "  ./capture.sh 'Note content'"
+      echo "  ./capture.sh -t task 'Task description'"
+      echo "  ./capture.sh -t learning 'New insight'"
+      echo "  ./capture.sh -u high 'Urgent item'"
+      echo "  ./capture.sh --search 'query'"
+      exit 0 ;;
+    *) NOTE="$1"; shift ;;
+  esac
+done
+
+# Search mode
+if [ -n "$SEARCH" ]; then
+  echo "🔍 Searching captures for: $SEARCH"
+  grep -r "$SEARCH" "$CAPTURES_DIR" 2>/dev/null || echo "No matches found."
+  exit 0
+fi
+
+# Auto-detect type if not specified
+if [ "$TYPE" = "note" ]; then
+  case "$NOTE" in
+    *idea*) TYPE="idea" ;;
+    *task*|*todo*|*fix*) TYPE="task" ;;
+    *learn*|*note*|*remember*) TYPE="learning" ;;
+    *bug*|*error*|*fix*) TYPE="bug" ;;
+    *) TYPE="note" ;;
+  esac
+fi
+
+# Generate capture entry
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M')
+URIGY_EMOJI=""
+case "$URGENCY" in
+  high) URGY_EMOJI="🔴" ;;
+  medium) URGY_EMOJI="🟡" ;;
+  normal) URGY_EMOJI="🟢" ;;
+esac
+
+ENTRY="[$TIMESTAMP] $URGY_EMOJI [$TYPE] $NOTE"
+
+# Save to appropriate file
+case "$TYPE" in
+  idea)      FILE="$CAPTURES_DIR/ideas.md" ;;
+  task)      FILE="$CAPTURES_DIR/tasks.md" ;;
+  learning)  FILE="$CAPTURES_DIR/learnings.md" ;;
+  bug)       FILE="$CAPTURES_DIR/bugs.md" ;;
+  *)         FILE="$CAPTURES_DIR/captures.md" ;;
+esac
+
+echo "$ENTRY" >> "$FILE"
+
+echo ""
+echo "✅ CAPTURED!"
+echo "   Type: $TYPE"
+echo "   $NOTE"
+echo "   Saved to: $FILE"
+echo ""
+echo "🧠 'Ideas come fast. Capturing them faster.'" 
+```
+
+### dojo-functions.js
+
+```javascript
+/**
+ * Quick capture from code
+ */
+async function quickCapture(content, options = {}) {
+  const type = options.type || detectType(content);
+  const urgency = options.urgency || 'normal';
+  const timestamp = new Date().toISOString();
+  
+  const entry = {
+    timestamp,
+    type,
+    urgency,
+    content,
+    tags: autoTag(content)
+  };
+  
+  await saveCapture(entry);
+  await confirmCapture(entry);
+  
+  return entry;
+}
+
+/**
+ * Auto-detect capture type from content
+ */
+function detectType(content) {
+  const lower = content.toLowerCase();
+  
+  if (lower.includes('idea')) return 'idea';
+  if (lower.includes('task') || lower.includes('todo') || lower.includes('fix')) return 'task';
+  if (lower.includes('learn') || lower.includes('remember')) return 'learning';
+  if (lower.includes('bug') || lower.includes('error')) return 'bug';
+  
+  return 'note';
+}
+
+/**
+ * Auto-generate tags from content
+ */
+function autoTag(content) {
+  const tags = [];
+  const lower = content.toLowerCase();
+  
+  const tagMap = {
+    'cobraclaw': 'cobraclaw',
+    'teddy': 'teddy',
+    'code': 'code',
+    'fix': 'fix',
+    'feature': 'feature',
+    'docs': 'docs',
+    'refactor': 'refactor',
+    'test': 'test'
+  };
+  
+  for (const [key, tag] of Object.entries(tagMap)) {
+    if (lower.includes(key)) tags.push(tag);
+  }
+  
+  return tags;
+}
+
+/**
+ * Save capture to appropriate file
+ */
+async function saveCapture(entry) {
+  const fs = require('fs');
+  const path = './scrolls/captures';
+  
+  const fileMap = {
+    'idea': `${path}/ideas.md`,
+    'task': `${path}/tasks.md`,
+    'learning': `${path}/learnings.md`,
+    'bug': `${path}/bugs.md`,
+    'note': `${path}/captures.md`
+  };
+  
+  const file = fileMap[entry.type] || `${path}/captures.md`;
+  
+  const entryText = `
+[${entry.timestamp}] [${entry.type.toUpperCase()}] ${entry.content}
+Tags: ${entry.tags.join(', ')}`;
+  
+  fs.appendFileSync(file, entryText);
+}
+
+/**
+ * Confirm capture with user
+ */
+function confirmCapture(entry) {
+  console.log(`
+✅ CAPTURED!
+────────────────────────────────
+📝 ${entry.content}
+🏷️  Type: ${entry.type}
+🏷️  Tags: ${entry.tags.join(', ')}
+${entry.urgency !== 'normal' ? `⚡ Urgency: ${entry.urgency}` : ''}
+────────────────────────────────
+📁 Saved to captures/${entry.type}s.md
+  `);
+}
+
+/**
+ * Search captures
+ */
+async function searchCaptures(query) {
+  const fs = require('fs');
+  const path = './scrolls/captures';
+  const results = [];
+  
+  const files = ['captures.md', 'ideas.md', 'tasks.md', 'learnings.md', 'bugs.md'];
+  
+  for (const file of files) {
+    const content = fs.readFileSync(`${path}/${file}`, 'utf8');
+    const lines = content.split('\n');
+    
+    lines.forEach((line, index) => {
+      if (line.toLowerCase().includes(query.toLowerCase())) {
+        results.push({ file, line: index + 1, content: line });
+      }
+    });
+  }
+  
+  return results;
+}
+```
+
+---
+
+## 🎯 Usage Examples
+
+### CLI Capture
+```bash
+./capture.sh "Great idea for new feature"
+./capture.sh -t task "Review PR #42"
+./capture.sh -t learning "QMD is faster than JSON"
+./capture.sh -u high "Production bug!"
+```
+
+### Code Capture
+```javascript
+const { quickCapture, searchCaptures } = require('./dojo-functions');
+
+// Capture something
+await quickCapture("Remember to update README", { type: 'task' });
+
+// Search captures
+const results = await searchCaptures("cobraclaw");
+```
+
+### Quick Capture Workflow
+```
+1. ./capture.sh "Idea!"
+2. (Later) Review captures.md
+3. (Organize) Move to appropriate file or project
+```
+
+---
+
+## 📖 Cobra Kai Vibes
+
+> "Strike fast. Capture faster. Ideas don't wait."
+> — The Creed
+
+**Capture Philosophy:**
+```
+⚡ Speed over perfection
+🏷️ Context over categorization
+📁 Save now, organize later
+🔍 Find when needed
+💾 Never lose an idea
+```
+
+---
+
+## 🔄 Evolution Path
+
+| Level | Feature | Unlock |
+|-------|---------|--------|
+| 1 | Basic capture | capture.sh |
+| 2 | Auto-tagging | Context detection |
+| 3 | Multi-source capture | Email, Slack, CLI |
+| 4 | AI organization | Auto-categorize |
+| 5 | Full PKM integration | Complete knowledge base |
+
+**Future ExpansIONS:**
+- `email-capture-qmd.md` - Capture from email
+- `voice-capture-qmd.md` - Voice notes
+- `web-capture-qmd.md` - Capture from browser
+- `organize-qmd.md` - Auto-organize captures
+
+---
+
+## 🔄 Test Strikes
+
+```bash
+# 1. Test basic capture
+./capture.sh "Test capture"
+
+# 2. Test type detection
+./capture.sh "This is an idea for a new feature"
+
+# 3. Test search
+./capture.sh --search "test"
+
+# 4. Test functions
+node dojo-functions.js test-capture
+```
+
+---
+
+## 📝 Complete
+
+**QMD: QUICK-CAPTURE System Added**
+- ⚡ Instant CLI capture
+- 🏷️ Auto-type detection
+- 📁 Auto-organize by type
+- 🔍 Searchable history
+- 💾 Persistent in scrolls/
+
+**Commit:** `git commit -m "QMD: QUICK-CAPTURE - Fast note capture with auto-tagging - Never Lose an Idea! 📝"`
+
+---
+
+**📝 "Ideas strike fast. Capture them faster." ⚡**
+
+# @qmd:tags=capture,notes,productivity,ideas,tasks,cobraclaw
+# @qmd:version=1.0

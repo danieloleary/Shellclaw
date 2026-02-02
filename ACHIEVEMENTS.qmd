@@ -1,0 +1,327 @@
+# 🏆 ACHIEVEMENTS.qmd
+
+🔧 QMD TAGS: SKILL, GAMIFICATION, ACHIEVEMENT, BADGE, COBRACLAW
+
+---
+
+## 🦀 Overview
+
+**Achievement Badge System** - Gamification badges displayed in README and tracked in the dojo. Complete tasks, earn badges, show them off.
+
+**Key Features:**
+- 🎖️ Visual badges in README.md
+- 📊 Badge tracking in creed.yaml
+- 🏆 Trophy case integration
+- 🔓 Unlock conditions for each badge
+- 🎉 Celebration messages on unlock
+
+---
+
+## 💥 How It Works
+
+### Badge Categories
+
+| Category | Icon | Description |
+|----------|------|-------------|
+| **Training** | 🥋 | Learning and growth |
+| **Combat** | ⚔️ | Tasks completed |
+| **Mastery** | 👑 | Milestone achievements |
+| **Secret** | 🎁 | Hidden easter eggs |
+| **Streak** | 🔥 | Consistency rewards |
+
+### Badge Levels
+
+| Level | Prefix | Rarity |
+|-------|--------|--------|
+| 🥉 | Bronze | Common |
+| 🥈 | Silver | Uncommon |
+| 🥇 | Gold | Rare |
+| 💎 | Diamond | Legendary |
+
+---
+
+## 🥋 Implementation Notes
+
+### Files Touched
+- `ACHIEVEMENTS.qmd` (this file)
+- `README.md` (badge display)
+- `creed.yaml` (badge config)
+- `dojo-functions.js` (badge functions)
+
+### creed.yaml Additions
+
+```yaml
+achievements:
+  enabled: true
+  display: "full"  # full | minimal | hidden
+  show_unlocked_only: false
+  
+  badges:
+    # Training Badges
+    first_strike:
+      name: "First Strike"
+      icon: "🥋"
+      level: "bronze"
+      description: "Complete your first task"
+      condition: "total_victories >= 1"
+      
+    black_belt:
+      name: "Black Belt"
+      icon: "🥋👑"
+      level: "diamond"
+      description: "Complete 100 tasks"
+      condition: "total_victories >= 100"
+    
+    # Combat Badges
+    no_mercy:
+      name: "No Mercy"
+      icon: "⚔️💀"
+      level: "gold"
+      description: "Complete 10 tasks in one day"
+      condition: "daily_victories >= 10"
+      
+    undefeated:
+      name: "Undefeated"
+      icon: "🏆"
+      level: "diamond"
+      description: "7-day streak with no defeats"
+      condition: "streak_days >= 7"
+    
+    # Mastery Badges
+    sensei:
+      name: "Sensei"
+      icon: "👨‍🏫"
+      level: "gold"
+      description: "Use all Forest Friends modes"
+      condition: "modes_used >= 7"
+      
+    architect:
+      name: "Architect"
+      icon: "🏗️"
+      level: "silver"
+      description: "Create 5 new QMD files"
+      condition: "qmd_created >= 5"
+    
+    # Secret Badges
+    clown_prince:
+      name: "Clown Prince"
+      icon: "🤡👑"
+      level: "legendary"
+      description: "[SECRET] Activate Clown Mode"
+      condition: "clown_mode_used == true"
+      
+    miyagi_approved:
+      name: "Miyagi Approved"
+      icon: "🧘"
+      level: "silver"
+      description: "[SECRET] Complete 10 tasks in Miyagi Mode"
+      condition: "miyagi_tasks >= 10"
+    
+    # Streak Badges
+    on_fire:
+      name: "On Fire"
+      icon: "🔥"
+      level: "silver"
+      description: "3-day winning streak"
+      condition: "streak_days >= 3"
+      
+    unstoppable:
+      name: "Unstoppable"
+      icon: "🔥👑"
+      level: "diamond"
+      description: "30-day winning streak"
+      condition: "streak_days >= 30"
+```
+
+### New Functions (dojo-functions.js)
+
+```javascript
+/**
+ * Check and unlock achievements
+ */
+async function checkAchievements() {
+  const achievements = config.achievements.badges;
+  const unlocked = [];
+  
+  for (const badge of achievements) {
+    if (meetsCondition(badge.condition) && !hasBadge(badge.id)) {
+      unlockBadge(badge);
+      unlocked.push(badge);
+    }
+  }
+  
+  if (unlocked.length > 0) {
+    celebrationAchievements(unlocked);
+  }
+  
+  return unlocked;
+}
+
+/**
+ * Unlock a badge
+ */
+function unlockBadge(badge) {
+  console.log(`\n🎖️ ACHIEVEMENT UNLOCKED! 🎖️`);
+  console.log(`   ${badge.icon} ${badge.name}`);
+  console.log(`   ${badge.description}`);
+  console.log(`   "${badge.flavor_text || 'Another trophy for the dojo!'}"`);
+  
+  addBadgeToProfile(badge);
+  saveAchievement(badge);
+}
+
+/**
+ * Display all unlocked badges
+ */
+function showBadges() {
+  const badges = getUnlockedBadges();
+  
+  console.log(`
+🎖️ ACHIEVEMENT BADGES
+============================`);
+  
+  for (const badge of badges) {
+    console.log(`   ${badge.icon} ${badge.name}`);
+  }
+  
+  console.log(`
+============================
+   ${badges.length} / ${totalBadges} UNLOCKED
+  `);
+}
+
+/**
+ * Badge celebration animation
+ */
+function celebrationAchievements(unlocked) {
+  console.log(`
+╔═══════════════════════════════════════╗
+║                                       ║
+║    🎉 ACHIEVEMENT UNLOCKED! 🎉       ║
+║                                       ║
+║  ${unlocked[0].icon} ${unlocked[0].name.padEnd(25)}  ║
+║                                       ║
+║  "${unlocked[0].flavor_text || 'Victory!'}"  ║
+║                                       ║
+╚═══════════════════════════════════════╝
+  `);
+}
+```
+
+### Shell Script (achievements.sh)
+
+```bash
+#!/bin/bash
+# 🎖️ COBRACLAW ACHIEVEMENTS
+# Badge system for the dojo
+
+case "$1" in
+  show)   show_badges ;;
+  check)  check_achievements ;;
+  unlocked) get_unlocked_badges ;;
+  *)      echo "🎖️ Usage: ./achievements.sh [show|check|unlocked]" ;;
+esac
+```
+
+---
+
+## 🎯 Usage Examples
+
+### Check Achievements
+```bash
+./achievements.sh check
+```
+
+### Show Unlocked Badges
+```bash
+./achievements.sh show
+```
+
+### Code Integration
+```javascript
+const { checkAchievements, showBadges } = require('./dojo-functions');
+await checkAchievements();
+showBadges();
+```
+
+### README Badge Display
+```markdown
+## 🎖️ Achievements
+
+| Badge | Name | Description |
+|-------|------|-------------|
+| 🥋 | First Strike | Complete your first task |
+| 🥋👑 | Black Belt | Complete 100 tasks |
+| ⚔️💀 | No Mercy | 10 tasks in one day |
+| 🔥 | On Fire | 3-day winning streak |
+| 🤡👑 | Clown Prince | [SECRET] Activate Clown Mode |
+
+*Total: 5/10 unlocked*
+```
+
+---
+
+## 📖 Cobra Kai Vibes
+
+> "First learn walk, then learn run. Then... earn badges."
+> — The Creed
+
+**Badge Philosophy:**
+```
+🎖️ Every victory has a badge
+🏆 Every badge tells a story
+👊 Earn them through action
+🥋 Share them with pride
+```
+
+---
+
+## 🔄 Evolution Path
+
+| Level | Feature | Unlock |
+|-------|---------|--------|
+| 1 | Basic badges | README display |
+| 2 | Badge tracking | creed.yaml config |
+| 3 | Celebration animations | unlock messages |
+| 4 | Badge trading | Share badges |
+| 5 | Leaderboard | Compare with other Champions |
+
+**Future Expansions:**
+- `leaderboard-qmd.md` - Compare badges between agents
+- `badge-trading-qmd.md` - Share achievements
+- `custom-badges-qmd.md` - Create custom badges
+
+---
+
+## 🔄 Test Strikes
+
+```bash
+# 1. Test badge display
+./achievements.sh show
+
+# 2. Test badge check
+./achievements.sh check
+
+# 3. Verify badge functions
+node dojo-functions.js test-achievements
+```
+
+---
+
+## 🎖️ Complete
+
+**QMD: ACHIEVEMENTS System Added**
+- 🎖️ Badge categories (Training, Combat, Mastery, Secret, Streak)
+- 🏆 Levels (Bronze, Silver, Gold, Diamond)
+- 📊 creed.yaml config
+- 💻 dojo-functions.js integration
+- 🎉 Celebration animations
+
+**Commit:** `git commit -m "QMD: ACHIEVEMENTS - Badge system, unlock conditions, celebration animations - Victory Badges! 🏆"`
+
+---
+
+**🎖️ "Every strike earns a badge. Every badge tells a story." 🏆**
+
+# @qmd:tags=achievements,badges,gamification,trophies,cobraclaw
+# @qmd:version=1.0

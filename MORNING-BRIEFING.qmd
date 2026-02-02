@@ -1,0 +1,387 @@
+# 🌅 MORNING-BRIEFING.qmd
+
+🔧 QMD TAGS: SKILL, DAILY, BRIEFING, PRODUCTIVITY, COBRACLAW
+
+---
+
+## 🦀 Overview
+
+**Morning Briefing QMD** - Auto-generated daily briefing created each morning. Includes weather, calendar, tasks, energy level, and a motivational quote to start the day right.
+
+**Key Features:**
+- 🌤️ Weather summary
+- 📅 Calendar highlights
+- 📋 Task preview
+- 💪 Energy level check
+- 🎯 Daily focus recommendation
+- 💬 Motivational quote
+
+---
+
+## 💥 How It Works
+
+### Briefing Structure
+
+```
+# 🌅 MORNING BRIEFING
+## [Day Name], [Date]
+
+## 🌤️ Weather
+[Weather summary for Lafayette]
+
+## 📅 Calendar Today
+- [Event 1]
+- [Event 2]
+
+## 📋 Tasks Today
+1. [Planned task 1]
+2. [Planned task 2]
+3. [Planned task 3]
+
+## 💪 Energy Forecast
+**Time:** [Morning/Afternoon/Evening]
+**Level:** [High/Medium/Low]
+**Recommendation:** [Focus type]
+
+## 🎯 Daily Focus
+**Theme:** [Theme based on day]
+**Priority:** [Top priority]
+**Avoid:** [Potential distractions]
+
+## 💬 Morning Motivation
+> "Quote of the day"
+
+## 🧸 Teddy's Note
+> "Ready for today, [Name]! Let's make it count."
+
+---
+*Generated: [Time]*
+```
+
+### Briefing Generation Flow
+
+```
+1. Check weather (via API or static)
+2. Load calendar events
+3. Review today's tasks
+4. Assess energy level (time-based)
+5. Select appropriate quote
+6. Generate and save briefing
+7. Display with welcome message
+```
+
+---
+
+## 🥋 Implementation Notes
+
+### Files Touched
+- `MORNING-BRIEFING.qmd` (this file)
+- `briefings/` (new directory)
+- `morning-briefing.sh` (generation script)
+- `dojo-functions.js` (briefing functions)
+
+### Directory Structure
+```
+briefings/
+├── 2026-02-01.md
+├── 2026-02-02.md
+└── ...
+```
+
+### Shell Script (morning-briefing.sh)
+
+```bash
+#!/bin/bash
+# 🌅 COBRACLAW MORNING BRIEFING
+# Start each day with clarity
+
+DATE=$(date +%Y-%m-%d)
+DAY=$(date +%A)
+TIME=$(date +%H:%M)
+OUTPUT_DIR="./briefings"
+OUTPUT_FILE="$OUTPUT_DIR/$DATE.md"
+
+mkdir -p "$OUTPUT_DIR"
+
+# Weather (simplified - can integrate API)
+WEATHER="☀️ Clear, 62°F - Perfect for a run!"
+
+# Calendar (simplified - can integrate gcal)
+EVENTS="- 📌 Livermore Half Marathon prep (if Mar 2 nearby)"
+
+# Tasks (from plans or memory)
+TASKS=$(ls plans/*.json 2>/dev/null | head -3 | sed 's/plans\///;s/.json//' | sed 's/^/- /')
+
+# Energy forecast based on time
+HOUR=$(date +%H)
+if [ "$HOUR" -lt 12 ]; then
+  ENERGY="🌅 Morning - High energy, tackle biggest tasks"
+elif [ "$HOUR" -lt 17 ]; then
+  ENERGY="☀️ Afternoon - Medium energy, collaborative work"
+else:
+  ENERGY="🌆 Evening - Lower energy, reflection and wrap-up"
+fi
+
+# Motivational quotes
+QUOTES=(
+  "Fear does not exist in this dojo. Start strong today."
+  "First strike, then strike hard. Today is your day."
+  "Victory is not given. It is taken. Take it today."
+  "The student who rises early conquers the day."
+  "Walk on road. Your path starts now."
+)
+RANDOM_QUOTE=${QUOTES[$((RANDOM % ${#QUOTES[@]}))]}
+
+# Generate briefing
+cat > "$OUTPUT_FILE" << EOF
+# 🌅 MORNING BRIEFING
+## $DAY, $DATE
+
+## 🌤️ Weather
+$WEATHER
+
+## 📅 Calendar Today
+$EVENTS
+
+## 📋 Tasks Today
+$TASKS
+
+## 💪 Energy Forecast
+$ENERGY
+
+## 🎯 Daily Focus
+- **Theme:** Productivity and momentum
+- **Priority:** Complete top task from plans
+- **Avoid:** Distractions and context switching
+
+## 💬 Morning Motivation
+> "$RANDOM_QUOTE"
+
+## 🧸 Teddy's Note
+> "Good morning! 🌅 Ready to make today count? 
+> Small steps, big wins. Let's do this."
+
+---
+*Generated: $TIME*
+EOF
+
+echo "🌅 Morning briefing created: $OUTPUT_FILE"
+echo ""
+cat "$OUTPUT_FILE"
+```
+
+### dojo-functions.js
+
+```javascript
+/**
+ * Generate morning briefing
+ */
+async function generateMorningBriefing() {
+  const briefing = {
+    date: new Date().toISOString().split('T')[0],
+    day: new Date().toLocaleString('en-US', { weekday: 'long' }),
+    weather: await getWeather(),
+    events: await getCalendarEvents(),
+    tasks: await getPlannedTasks(),
+    energy: assessEnergyLevel(),
+    focus: recommendDailyFocus(),
+    quote: getMotivationalQuote()
+  };
+  
+  saveBriefing(briefing);
+  displayBriefing(briefing);
+  
+  return briefing;
+}
+
+/**
+ * Display briefing with formatting
+ */
+function displayBriefing(briefing) {
+  console.log(`
+╔═══════════════════════════════════════╗
+║       🌅 MORNING BRIEFING 🌅          ║
+║       ${briefing.day.toUpperCase()} ${briefing.date}          ║
+╚═══════════════════════════════════════╝
+
+🌤️ WEATHER
+──────────
+${briefing.weather}
+
+📅 CALENDAR
+──────────
+${briefing.events.map(e => `- ${e}`).join('\n') || '- No events scheduled'}
+
+📋 TASKS TODAY
+──────────────
+${briefing.tasks.map((t, i) => `${i+1}. ${t}`).join('\n') || '- Review plans'}
+
+💪 ENERGY FORECAST
+──────────────────
+${briefing.energy}
+
+🎯 DAILY FOCUS
+─────────────
+${briefing.focus}
+
+💬 MOTIVATION
+─────────────
+> "${briefing.quote}"
+
+🧸 "Ready for today! Small steps, big wins." 🌅
+  `);
+}
+
+/**
+ * Assess energy level based on time
+ */
+function assessEnergyLevel() {
+  const hour = new Date().getHours();
+  
+  if (hour < 9) {
+    return { level: 'HIGH', time: 'Morning', recommendation: 'Tackle biggest tasks now' };
+  } else if (hour < 14) {
+    return { level: 'MEDIUM', time: 'Afternoon', recommendation: 'Collaborative work and meetings' };
+  } else if (hour < 18) {
+    return { level: 'MEDIUM', time: 'Late Afternoon', recommendation: 'Wrap up and prepare for tomorrow' };
+  } else {
+    return { level: 'LOW', time: 'Evening', recommendation: 'Reflection and light tasks' };
+  }
+}
+
+/**
+ * Recommend daily focus based on day
+ */
+function recommendDailyFocus() {
+  const day = new Date().getDay();
+  const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const focusThemes = {
+    'Monday': 'Start strong, set weekly pace',
+    'Tuesday': 'Deep work and momentum',
+    'Wednesday': 'Mid-week push',
+    'Thursday': 'Wrap up week strong',
+    'Friday': 'Complete and prepare',
+    'Saturday': 'Creative projects',
+    'Sunday': 'Rest and reflection'
+  };
+  
+  return {
+    theme: focusThemes[dayNames[day]],
+    priority: 'Review top task from plans',
+    avoid: 'Distractions and meetings'
+  };
+}
+
+/**
+ * Get motivational quote
+ */
+function getMotivationalQuote() {
+  const quotes = [
+    "Fear does not exist in this dojo. Start strong today.",
+    "First strike, then strike hard. Today is your day.",
+    "Victory is not given. It is taken. Take it today.",
+    "The student who rises early conquers the day.",
+    "Walk on road. Your path starts now.",
+    "Every champion was once a beginner who didn't quit."
+  ];
+  
+  return quotes[Math.floor(Math.random() * quotes.length)];
+}
+```
+
+### Cron Schedule (Optional)
+
+```bash
+# Add to crontab for auto-generation at 6 AM
+0 6 * * * cd /path/to/cobraclaw && ./morning-briefing.sh
+```
+
+---
+
+## 🎯 Usage Examples
+
+### Generate Today's Briefing
+```bash
+./morning-briefing.sh
+```
+
+### View Today's Briefing
+```bash
+cat briefings/2026-02-01.md
+```
+
+### Code Integration
+```javascript
+const { generateMorningBriefing } = require('./dojo-functions');
+await generateMorningBriefing();
+```
+
+---
+
+## 📖 Cobra Kai Vibes
+
+> "The early bird strikes first. The prepared student conquers."
+> — The Creed
+
+**Morning Philosophy:**
+```
+🌅 Fresh start every morning
+☀️ Energy at its peak
+🎯 Clarity on priorities
+💪 Action-oriented
+🏆 Victory starts here
+```
+
+---
+
+## 🔄 Evolution Path
+
+| Level | Feature | Unlock |
+|-------|---------|--------|
+| 1 | Basic briefing | morning-briefing.sh |
+| 2 | Weather API integration | Real weather data |
+| 3 | Calendar integration | Google Calendar sync |
+| 4 | ML energy prediction | Smart energy suggestions |
+| 5 | Full daily dashboard | Visual briefing UI |
+
+**Future ExpansIONS:**
+- `evening-summary-qmd.md` - End of day wrap-up
+- `weekly-preview-qmd.md` - Week ahead preview
+- `energy-tracking-qmd.md` - Track energy patterns
+
+---
+
+## 🔄 Test Strikes
+
+```bash
+# 1. Test briefing generation
+./morning-briefing.sh
+
+# 2. Verify file created
+ls -la briefings/
+
+# 3. Test functions
+node dojo-functions.js test-briefing
+```
+
+---
+
+## 🌅 Complete
+
+**QMD: MORNING-BRIEFING System Added**
+- 🌤️ Weather summary
+- 📅 Calendar highlights
+- 📋 Task preview
+- 💪 Energy forecast
+- 🎯 Daily focus recommendation
+- 💬 Motivational quotes
+- 🧸 Teddy's personal note
+
+**Commit:** `git commit -m "QMD: MORNING-BRIEFING - Daily briefing with weather, calendar, tasks, energy - Start Every Day Right! 🌅"`
+
+---
+
+**🌅 "Every morning is a fresh start. Make it count." 🌅**
+
+# @qmd:tags=morning,briefing,daily,weather,calendar,tasks,cobraclaw
+# @qmd:version=1.0
