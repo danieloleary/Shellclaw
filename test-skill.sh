@@ -36,6 +36,8 @@ echo "=================================="
 
 # Core files
 count_test "[ -f SKILL.md ]" "SKILL.md exists"
+count_test "[ -f README.md ]" "README.md exists"
+count_test "[ -f LICENSE ]" "LICENSE exists"
 
 # Scripts
 count_test "[ -f test-skill.sh ]" "test-skill.sh exists"
