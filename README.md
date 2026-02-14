@@ -36,18 +36,25 @@ Done. Your move.
 ```
 cobraclaw/
 ├── SKILL.md           # Main skill file
+├── README.md
+├── LICENSE
 ├── cobraclaw          # CLI tool
+├── test-skill.sh
 ├── katas/            # Practice routines
 │   ├── strike-first.sh
 │   ├── hard-shell.sh
 │   ├── cobra-strike.sh
 │   ├── no-mercy.sh
 │   ├── evolve.sh
-│   └── wax-on-wax-off.sh
+│   ├── wax-on-wax-off.sh
+│   └── sweep-the-leg.sh
 ├── scrolls/          # Reference docs
 │   ├── doctrine-quick-ref.md
 │   ├── pillars-reference.md
-│   └── patterns-lookup.md
+│   ├── patterns-lookup.md
+│   ├── quotes-collection.md
+│   ├── victories.md
+│   └── trophies.json
 └── shell tools
     ├── cobra-mode.sh
     ├── patrol.sh
