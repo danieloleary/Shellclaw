@@ -68,6 +68,13 @@ count_test "[ -x katas/evolve.sh ]" "kata: evolve.sh"
 count_test "[ -x katas/wax-on-wax-off.sh ]" "kata: wax-on-wax-off.sh"
 count_test "[ -x katas/sweep-the-leg.sh ]" "kata: sweep-the-leg.sh"
 
+# Scrolls
+count_test "[ -f scrolls/doctrine-quick-ref.md ]" "scroll: doctrine-quick-ref.md"
+count_test "[ -f scrolls/pillars-reference.md ]" "scroll: pillars-reference.md"
+count_test "[ -f scrolls/patterns-lookup.md ]" "scroll: patterns-lookup.md"
+count_test "[ -f scrolls/quotes-collection.md ]" "scroll: quotes-collection.md"
+count_test "[ -f scrolls/victories.md ]" "scroll: victories.md"
+
 echo "=================================="
 echo "🥋 $PASS / $TESTS passed"
 echo ""

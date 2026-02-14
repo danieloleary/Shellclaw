@@ -9,7 +9,7 @@
 
 [![GitHub](https://img.shields.io/badge/GitHub-danieloleary/cobraclaw?style=flat-square&logo=github)](https://github.com/danieloleary/cobraclaw)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Landing%20Page-e94560?style=flat-square&logo=github)](https://danieloleary.github.io/cobraclaw/)
-[![Tests](https://img.shields.io/badge/Tests-9%2F9%20passing-ff9500?style=flat-square)](test-skill.sh)
+[![Tests](https://img.shields.io/badge/Tests-25%2F25%20passing-ff9500?style=flat-square)](test-skill.sh)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
 ---
@@ -103,20 +103,82 @@ Choose your warrior style:
 
 ---
 
+## 🥋 The Katas
+
+**Executable practice routines. Run them. Master them.**
+
+```bash
+cd katas
+
+# Test any kata
+./strike-first.sh --test
+./hard-shell.sh --test
+./cobra-strike.sh --test
+./no-mercy.sh --test
+./evolve.sh --test
+
+# Practice modes
+./wax-on-wax-off.sh on    # Practice mode
+./wax-on-wax-off.sh off   # Apply mode
+
+# Finish the job
+./sweep-the-leg.sh --execute
+```
+
+| Kata | Purpose |
+|------|---------|
+| `strike-first.sh` | Quick decisive response |
+| `hard-shell.sh` | Authority & protection |
+| `cobra-strike.sh` | Precision delivery |
+| `no-mercy.sh` | Commit & close |
+| `evolve.sh` | Growth from failure |
+| `wax-on-wax-off.sh` | Practice makes perfect 👐 |
+| `sweep-the-leg.sh` | Finish the job ⚠️ |
+
+---
+
+## 📜 The Scrolls
+
+**Knowledge base. Reference. Wisdom.**
+
+| Scroll | Purpose |
+|--------|---------|
+| `doctrine-quick-ref.md` | The Three Laws |
+| `pillars-reference.md` | Five pillars breakdown |
+| `patterns-lookup.md` | Response templates |
+| `quotes-collection.md` | Cobra Kai wisdom |
+| `victories.md` | Win/loss tracking |
+
+---
+
 ## 📦 What's Inside
 
 ```
 cobraclaw/
+├── 🥋 katas/               ← Executable practice routines
+│   ├── strike-first.sh    ← Quick decisive response
+│   ├── hard-shell.sh      ← Authority & protection
+│   ├── cobra-strike.sh    ← Precision delivery
+│   ├── no-mercy.sh        ← Commit & close
+│   ├── evolve.sh          ← Growth from failure
+│   ├── wax-on-wax-off.sh  ← Practice makes perfect
+│   └── sweep-the-leg.sh   ← Finish the job
+│
+├── 📜 scrolls/             ← Knowledge base
+│   ├── doctrine-quick-ref.md
+│   ├── pillars-reference.md
+│   ├── patterns-lookup.md
+│   ├── quotes-collection.md
+│   └── victories.md
+│
 ├── 🦀 COBRA-KAI.md        ← Philosophy & origin
 ├── 📚 RESEARCH.md         ← Theme research
 ├── 📋 PATTERNS.md         ← Doctrine patterns
 ├── 🎭 FLAVORS.md          ← 5 warrior personalities
 ├── 📝 PROMPTS.md         ← 10 templates
 ├── 📇 QUICK-REF.md       ← Dojo reference card
-├── 📖 shell-claw-qmd.md  ← Training manual
-├── 📖 HOW-WE-BUILT.md    ← Long-form story
-├── 🌐 index.html         ← Landing page
-└── ✅ test-skill.sh      ← 9 tests
+├── 🌐 index.html          ← Landing page
+└── ✅ test-skill.sh       ← 25 tests
 ```
 
 ---
