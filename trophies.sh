@@ -1,9 +1,10 @@
 #!/bin/bash
-# 🏆 COBRACLAW TROPHIES SYSTEM
+# COBRACLAW TROPHIES SYSTEM
 # Track victories and display trophy case
 
-TROPHY_FILE="./scrolls/trophies.json"
-TROPHY_DIR="./scrolls"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TROPHY_FILE="$SCRIPT_DIR/scrolls/trophies.json"
+TROPHY_DIR="$SCRIPT_DIR/scrolls"
 
 # Initialize trophy file
 init_trophies() {
@@ -21,7 +22,7 @@ init_trophies() {
   "victories": []
 }
 EOF
-    echo "🏆 Trophy case initialized."
+    echo "Trophy case initialized."
   fi
 }
 
@@ -36,11 +37,11 @@ add_trophy() {
   local medal=""
   
   case "$type" in
-    diamond) points=10; medal="💎" ;;
-    gold)    points=5;  medal="🥇" ;;
-    silver)  points=3;  medal="🥈" ;;
-    bronze)  points=1;  medal="🥉" ;;
-    *)       points=1;  medal="🥉" ;;
+    diamond) points=10; medal="[D]" ;;
+    gold)    points=5;  medal="[G]" ;;
+    silver)  points=3;  medal="[S]" ;;
+    bronze)  points=1;  medal="[B]" ;;
+    *)       points=1;  medal="[B]" ;;
   esac
   
   # Update counts
@@ -67,12 +68,9 @@ add_trophy() {
   if [ $streak -ge 3 ]; then
     fires=$((fires + 1))
     total=$((total + 2))
-    echo "🔥 STREAK OF $streak! Bonus trophy awarded!"
+    echo "STREAK OF $streak! Bonus trophy awarded!"
     streak=0
   fi
-  
-  # Write updated counts
-  sed -i '' "s/\"diamonds\": $diamonds/\"diamonds\": $((diamonds - 1))/; s/\"diamonds\": [0-9]*/\"diamonds\": $diamonds/" "$TROPHY_FILE" 2>/dev/null || true
   
   # Simpler approach - rewrite file
   cat > "$TROPHY_FILE" << EOF
@@ -89,7 +87,7 @@ add_trophy() {
 EOF
   
   echo ""
-  echo "🥇🥇🥇 VICTORY! $medal Trophy added to case."
+  echo "VICTORY! $medal Trophy added to case."
   echo "   Task: $task"
   echo ""
   show_trophy_case
@@ -107,13 +105,13 @@ show_trophy_case() {
   local total=$(grep -o '"total": [0-9]*' "$TROPHY_FILE" | grep -o '[0-9]*')
   
   echo ""
-  echo "🏆 COBRACLAW TROPHY CASE"
+  echo "COBRACLAW TROPHY CASE"
   echo "============================"
-  echo "💎 Diamond: $diamonds"
-  echo "🥇 Gold:    $golds"
-  echo "🥈 Silver:  $silvers"
-  echo "🥉 Bronze:  $bronzes"
-  echo "🔥 Fire:    $fires"
+  echo "Diamond: $diamonds"
+  echo "Gold:    $golds"
+  echo "Silver:  $silvers"
+  echo "Bronze:  $bronzes"
+  echo "Fire:    $fires"
   echo "----------------------------"
   echo "TOTAL:      $total VICTORIES"
   echo "============================"
@@ -123,13 +121,13 @@ show_trophy_case() {
 # Reset trophies
 reset_trophies() {
   rm -f "$TROPHY_FILE"
-  echo "🗑️ Trophy case cleared. New dojo session begins."
+  echo "Trophy case cleared. New dojo session begins."
 }
 
 # Export trophy summary
 export_trophies() {
   init_trophies
-  echo "📊 TROPHY SUMMARY - $(date '+%Y-%m-%d %H:%M')"
+  echo "TROPHY SUMMARY - $(date '+%Y-%m-%d %H:%M')"
   cat "$TROPHY_FILE"
 }
 
@@ -140,5 +138,5 @@ case "$1" in
   reset)  reset_trophies ;;
   export) export_trophies ;;
   init)   init_trophies ;;
-  *)      echo "🏆 TROPHIES - Usage: ./trophies.sh [add|show|reset|export|init]" ;;
+  *)      echo "TROPHIES - Usage: ./trophies.sh [add|show|reset|export|init]" ;;
 esac

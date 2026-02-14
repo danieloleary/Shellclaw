@@ -1,5 +1,5 @@
 #!/bin/bash
-# 🐍 COBRA MODE - Aggressive Performance
+# COBRA MODE - Aggressive Performance
 # Strike fast. Strike hard. No hesitation.
 
 COBRA_MODE=true
@@ -10,7 +10,7 @@ strike() {
   local command="$1"
   local attempt=1
   
-  echo "🥊 STRIKE: $command"
+  echo "STRIKE: $command"
   
   while [ $attempt -le $MAX_RETRIES ]; do
     echo "  Attempt $attempt/$MAX_RETRIES..."
@@ -19,23 +19,23 @@ strike() {
     exit_code=$?
     
     if [ $exit_code -eq 0 ]; then
-      echo "  ✅ VICTORY!"
+      echo "  VICTORY!"
       return 0
     fi
     
     if [ $attempt -lt $MAX_RETRIES ]; then
-      echo "  💀 Defeat. Retrying..."
+      echo "  Defeat. Retrying..."
     fi
     
     attempt=$((attempt + 1))
     sleep 1
   done
   
-  echo "💀💀💀 FINAL DEFEAT: $command"
+  echo "FINAL DEFEAT: $command"
   echo "FINISH IT? [y/N]"
   read -r response
-  if [[ "$response" == "y" || "$response" == "Y" ]]; then
-    echo "🥊 FINISHING IT!"
+  if [[ "$response" == "y" || "$response" == "Y" ]; then
+    echo "FINISHING IT!"
     eval "$command" || true
   fi
   
@@ -46,7 +46,6 @@ strike() {
 if [ -n "$1" ]; then
   strike "$1"
 else
-  echo "🐍 COBRA MODE ACTIVATED"
+  echo "COBRA MODE ACTIVATED"
   echo "Usage: ./cobra-mode.sh '<command>'"
 fi
-# DEPRECATED: Use PREEMPTIVE-STRIKES.qmd instead (cobra-mode strike() function embedded)

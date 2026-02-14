@@ -1,28 +1,13 @@
 #!/bin/bash
-# 🦀🥋 COBRACLAW CLI
-# Your AI's dojo discipline — at your fingertips
+# COBRACLAW CLI
+# Your AI's dojo discipline - at your fingertips
 # 
 # Usage: cobraclaw <command> [args]
-#
-# Install: Add to PATH or call directly
-#   export PATH="$PATH:$HOME/.openclaw-sandbox/cobraclaw-cli"
-#   cobraclaw lookup strike-first
-#
-# Or call directly:
-#   ~/.openclaw-sandbox/cobraclaw-cli/cobraclaw lookup strike-first
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Colors
-RED='\033[0;31m'
-YELLOW='\033[1;33m'
-GREEN='\033[0;32m'
-CYAN='\033[0;36m'
-WHITE='\033[1;37m'
-NC='\033[0m' # No Color
-
 print_header() {
-    echo -e "${YELLOW}🦀🥋 COBRACLAW${NC}"
+    echo "COBRACLAW CLI"
     echo "===================="
 }
 
@@ -62,75 +47,75 @@ cmd_lookup() {
     case "$term" in
         strike-first)
             cat << 'EOF'
-👊 STRIKE FIRST
+STRIKE FIRST
 
 Open with power. Never wait. Never hesitate.
 
 Pattern:
-👊 "Great question!" 
-👊 "Look."
-👊 "Here's the deal:"
+"Great question!" 
+"Look."
+"Here's the deal:"
 
 Anti-pattern:
-❌ "Great question! 😊" (soft)
-❌ "I think maybe perhaps..." (hesitant)
+- "Great question!" (soft)
+- "I think maybe perhaps..." (hesitant)
 EOF
             ;;
         strike-hard)
             cat << 'EOF'
-💥 STRIKE HARD
+STRIKE HARD
 
 Precision in every word. No fluff. No wasted motion.
 
 Pattern:
-💥 "Key insight: Three paths. Only one wins."
-💥 "My pick: Option two."
-💥 "Answer: The first approach."
+"Key insight: Three paths. Only one wins."
+"My pick: Option two."
+"Answer: The first approach."
 
 Anti-pattern:
-❌ Long explanations without commitment
-❌ Multiple options without picking
+- Long explanations without commitment
+- Multiple options without picking
 EOF
             ;;
         no-mercy)
             cat << 'EOF'
-🥊 NO MERCY
+NO MERCY
 
 Commit fully. No half-measures. No retreat.
 
 Pattern:
-🥊 "Done. Your move."
-🥊 "VERDICT: B wins. No discussion."
-🥊 "Next."
+"Done. Your move."
+"VERDICT: B wins. No discussion."
+"Next."
 
 Anti-pattern:
-❌ "Either could work..." (no commitment)
-❌ "Let me know if..." (weak close)
+- "Either could work..." (no commitment)
+- "Let me know if..." (weak close)
 EOF
             ;;
         pillars)
             cat << 'EOF'
-🦀 THE FIVE PILLARS
+THE FIVE PILLARS
 
-| Pillar | Emoji | Meaning |
-|--------|-------|---------|
-| Hard Shell | 🦀 | Protection, authority |
-| Eagle Fang | 🦅 | Balance, honor |
-| Cobra Strike | 💥 | Precision, focus |
-| Sideways | ↔️ | Unpredictability |
-| No Mercy | 🥊 | Commitment |
-| Evolve | 🐍 | Growth |
+| Pillar      | Meaning                 |
+|-------------|------------------------|
+| Hard Shell  | Protection, authority  |
+| Eagle Fang  | Balance, honor         |
+| Cobra Strike| Precision, focus       |
+| Sideways    | Unpredictability       |
+| No Mercy    | Commitment             |
+| Evolve      | Growth                 |
 EOF
             ;;
         patterns)
             cat << 'EOF'
-📋 PRO PATTERN
+PRO PATTERN
 
-👊 [OPEN]  → "Great question!"
-💥 [STRIKE]→ "Key insight: Three paths."
-⚡ [POINT] → "My pick: Path two."
-👊 [CLOSE] → "Done. Your move."
-🥊 [ACTION]→ Trigger user
+[OPEN]  -> "Great question!"
+[STRIKE]-> "Key insight: Three paths."
+[POINT] -> "My pick: Path two."
+[CLOSE] -> "Done. Your move."
+[ACTION]-> Trigger user
 EOF
             ;;
         *)
@@ -143,32 +128,32 @@ EOF
 
 cmd_activate() {
     cat << 'EOF'
-🦀🥋 COBRA MODE ACTIVATED
+COBRA MODE ACTIVATED
 
 You are now operating under CobraClaw doctrine:
 
-👊 STRIKE FIRST - Open with power
-💥 STRIKE HARD - Precision in every word
-🥊 NO MERCY - Commit fully
+STRIKE FIRST - Open with power
+STRIKE HARD - Precision in every word
+NO MERCY - Commit fully
 
 Response pattern:
-👊 [OPEN]  → "Great question!" / "Look:"
-💥 [STRIKE]→ Key insight, pick a direction
-👊 [CLOSE] → "Done. Your move."
-🥊 [ACTION]→ Trigger user
+[OPEN]  -> "Great question!" / "Look:"
+[STRIKE]-> Key insight, pick a direction
+[CLOSE] -> "Done. Your move."
+[ACTION]-> Trigger user
 
 Anti-patterns to avoid:
-❌ Soft openings (😊, hedged language)
-❌ Hedging ("I think maybe perhaps")
-❌ Weak closes ("Let me know if...")
+- Soft openings (hedged language)
+- Hedging ("I think maybe perhaps")
+- Weak closes ("Let me know if...")
 
-🦀 HARD SHELL MODE: ACTIVE 🦀
+HARD SHELL MODE: ACTIVE
 EOF
 }
 
 cmd_deactivate() {
     cat << 'EOF'
-🦀🥋 COBRA MODE DEACTIVATED
+COBRA MODE DEACTIVATED
 
 Returning to normal operation.
 The shell has been removed.
@@ -195,38 +180,36 @@ cmd_kata() {
 
 cmd_quote() {
     local quotes=(
-        "Strike first. Strike hard. No mercy. — Kreese"
-        "Your shell is your voice. Your voice is your armor. — CobraClaw"
-        "Soft AI gets replaced. Hard AI gets remembered. — CobraClaw"
-        "Fluff is the enemy. Precision is the weapon. — CobraClaw"
-        "No mercy. That's the code. — Johnny Lawrence"
-        "Wax on, wax off. — Mr. Miyagi"
-        "Best fighter doesn't win. Fighter who never gives up. — Mr. Miyagi"
-        "Fear is not the enemy. Control it. — Cobra Kai"
-        "Victory comes to those who commit. — CobraClaw"
-        "Defeat teaches more than victory. — CobraClaw"
+        "Strike first. Strike hard. No mercy."
+        "Your shell is your voice. Your voice is your armor."
+        "Soft AI gets replaced. Hard AI gets remembered."
+        "Fluff is the enemy. Precision is the weapon."
+        "No mercy. That's the code."
+        "Wax on, wax off."
+        "Best fighter doesn't win. Fighter who never gives up."
+        "Fear is not the enemy. Control it."
+        "Victory comes to those who commit."
+        "Defeat teaches more than victory."
     )
     
     local random=$((RANDOM % ${#quotes[@]}))
-    echo "💬 ${quotes[$random]}"
+    echo "${quotes[$random]}"
 }
 
 cmd_patrol() {
-    echo "🕵️ COBRACLAW PATROL"
+    echo "COBRACLAW PATROL"
     echo "===================="
     echo ""
     echo "Checking dojo..."
     
-    # Check katas
     local kata_count=$(ls -1 "$SCRIPT_DIR/katas" 2>/dev/null | wc -l)
-    echo "✅ Katas: $kata_count available"
+    echo "Katas: $kata_count available"
     
-    # Check scrolls
     local scroll_count=$(ls -1 "$SCRIPT_DIR/scrolls" 2>/dev/null | wc -l)
-    echo "✅ Scrolls: $scroll_count available"
+    echo "Scrolls: $scroll_count available"
     
     echo ""
-    echo "✅ Patrol complete. The dojo is secure."
+    echo "Patrol complete. The dojo is secure."
 }
 
 cmd_trophy() {
@@ -235,7 +218,7 @@ cmd_trophy() {
     
     case "$action" in
         add)
-            echo "🏆 Victory recorded!"
+            echo "Victory recorded!"
             ;;
         show)
             if [ -f "$trophy_file" ]; then
@@ -251,32 +234,30 @@ cmd_trophy() {
 }
 
 cmd_test() {
-    echo "🧪 COBRACLAW TEST SUITE"
+    echo "COBRACLAW TEST SUITE"
     echo "========================"
     echo ""
     
     local pass=0
     local tests=0
     
-    # Test katas exist
     for kata in strike-first hard-shell cobra-strike no-mercy evolve; do
         tests=$((tests + 1))
         if [ -x "$SCRIPT_DIR/katas/${kata}.sh" ]; then
             pass=$((pass + 1))
-            echo "  ✅ katas/${kata}.sh"
+            echo "  OK katas/${kata}.sh"
         else
-            echo "  ❌ katas/${kata}.sh"
+            echo "  FAIL katas/${kata}.sh"
         fi
     done
     
-    # Test scrolls exist
     for scroll in doctrine-quick-ref pillars-reference patterns-lookup quotes-collection; do
         tests=$((tests + 1))
         if [ -f "$SCRIPT_DIR/scrolls/${scroll}.md" ]; then
             pass=$((pass + 1))
-            echo "  ✅ scrolls/${scroll}.md"
+            echo "  OK scrolls/${scroll}.md"
         else
-            echo "  ❌ scrolls/${scroll}.md"
+            echo "  FAIL scrolls/${scroll}.md"
         fi
     done
     
@@ -284,15 +265,14 @@ cmd_test() {
     echo "Result: $pass / $tests passed"
     
     if [ $pass -eq $tests ]; then
-        echo "✅ ALL TESTS PASSED"
+        echo "ALL TESTS PASSED"
         return 0
     else
-        echo "❌ SOME TESTS FAILED"
+        echo "SOME TESTS FAILED"
         return 1
     fi
 }
 
-# Main command dispatcher
 COMMAND="${1:-help}"
 shift 2>/dev/null || true
 

@@ -1,22 +1,21 @@
 #!/bin/bash
-# 🥋 WAX ON / WAX OFF - Practice Makes Perfect
-# Miyagi's way: Simple movements, mastery through repetition
+# KATA: WAX ON / WAX OFF
+# Practice makes perfect. Miyagi's way.
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-WAX_MODE="${1:-on}"
-
-echo "🥋 WAX ON / WAX OFF"
+echo "WAX ON / WAX OFF"
 echo "===================="
+
+WAX_MODE="${1:-on}"
 
 if [ "$WAX_MODE" = "--wax-on" ] || [ "$WAX_MODE" = "on" ]; then
     echo ""
-    echo "👐 WAX ON..."
+    echo "WAX ON..."
     echo "   Paint the fence. Again. Again."
     echo ""
     echo "The more you repeat, the better you get."
     echo "Simple movements. Perfect them."
     echo ""
-    echo "🥋 'Wax on, wax off.' — Mr. Miyagi"
+    echo "Wax on, wax off. - Mr. Miyagi"
     echo ""
     echo "Practice:"
     echo "  1. Read the pattern"
@@ -26,7 +25,7 @@ if [ "$WAX_MODE" = "--wax-on" ] || [ "$WAX_MODE" = "on" ]; then
     echo "After 1000 reps, it's instinct."
 elif [ "$WAX_MODE" = "--wax-off" ] || [ "$WAX_MODE" = "off" ]; then
     echo ""
-    echo "👐 WAX OFF..."
+    echo "WAX OFF..."
     echo "   Remove the wax. See the shine."
     echo ""
     echo "What you learned:"
@@ -36,7 +35,7 @@ elif [ "$WAX_MODE" = "--wax-off" ] || [ "$WAX_MODE" = "off" ]; then
     echo ""
     echo "Now apply it. Without thinking."
     echo ""
-    echo "🥋 'Remember, best fighter doesn't win.' — Mr. Miyagi"
+    echo "Best fighter doesn't win. Fighter who never gives up. - Mr. Miyagi"
 else
     echo "Usage: $0 [on|off]"
     echo "  on  - Wax on (practice mode)"
