@@ -59,6 +59,15 @@ count_test "[ -f cobra-mode.sh ]" "cobra-mode.sh exists"
 count_test "[ -f trophies.sh ]" "trophies.sh exists"
 count_test "[ -f quotes.sh ]" "quotes.sh exists"
 
+# Katas
+count_test "[ -x katas/strike-first.sh ]" "kata: strike-first.sh"
+count_test "[ -x katas/hard-shell.sh ]" "kata: hard-shell.sh"
+count_test "[ -x katas/cobra-strike.sh ]" "kata: cobra-strike.sh"
+count_test "[ -x katas/no-mercy.sh ]" "kata: no-mercy.sh"
+count_test "[ -x katas/evolve.sh ]" "kata: evolve.sh"
+count_test "[ -x katas/wax-on-wax-off.sh ]" "kata: wax-on-wax-off.sh"
+count_test "[ -x katas/sweep-the-leg.sh ]" "kata: sweep-the-leg.sh"
+
 echo "=================================="
 echo "🥋 $PASS / $TESTS passed"
 echo ""
